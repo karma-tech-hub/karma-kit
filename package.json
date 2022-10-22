@@ -1,0 +1,28 @@
+{
+  "name": "@karma/kit",
+  "version": "1.0.0",
+  "description": "Karma kit Plugin is widgets kit for Elementor",
+  "main": "index.js",
+  "scripts": {
+    "serve": "mix watch",
+    "build": "mix --production",
+    "lang": "grunt lang"
+  },
+  "authors": [
+    {
+      "name": "Hasan Ahani",
+      "email": "hasan@karmatechhub.com"
+    }
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^6.7.1",
+    "fast-glob": "^3.2.12",
+    "fontagon": "^1.1.1",
+    "laravel-mix": "^6.0.49",
+    "laravel-mix-banner": "^0.1.4",
+    "sass": "^1.55.0",
+    "sass-loader": "^13.1.0",
+    "tailwindcss": "^3.1.8"
+  }
+}

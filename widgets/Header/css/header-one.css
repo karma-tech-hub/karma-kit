@@ -1,0 +1,41 @@
+/**
+ * @project        Karma Kit
+ * @author         Karma Team
+ * @website        https://karamtechhub.com
+ * @version       1.0.0
+ *
+ */
+
+/*
+- project:  KarmaKit
+- name:     header-one.scss
+- Version:  1.0.0
+- date:     2022-10-20
+- Author:   Karma Team
+- website:  https://karmatechhub.com
+*/
+.k-kit-header {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem
+}
+.k-kit-header .k-kit-menu > ul {
+    margin: 0px;
+    display: flex;
+    list-style-type: none;
+    padding: 0px
+}
+.k-kit-header .k-kit-menu a {
+    transition-property: all;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+}
+.k-kit-header_logo {
+    margin-right: auto;
+    display: flex;
+    align-items: center
+}

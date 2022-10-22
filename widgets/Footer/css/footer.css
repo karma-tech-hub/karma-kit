@@ -1,0 +1,60 @@
+/**
+ * @project        Karma Kit
+ * @author         Karma Team
+ * @website        https://karamtechhub.com
+ * @version       1.0.0
+ *
+ */
+
+/*
+- project:  KarmaKit
+- name:     footer.scss
+- Version:  1.0.0
+- date:     2022-10-16
+- Author:   Karma Team
+- website:  https://karmatechhub.com
+*/
+.k-kit-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem
+}
+.k-kit-footer .k-kit-menu ul {
+    margin: 0px;
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0px
+}
+.k-kit-footer .k-kit-menu a {
+    transition-property: all;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+}
+.k-kit-footer_layout {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: center
+}
+.k-kit-footer_social {
+    grid-column: span 2 / span 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem
+}
+.k-kit-footer_social a {
+    display: flex;
+    height: 3rem;
+    width: 3rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    transition-property: all;
+    transition-duration: 200ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+}
+.k-kit-footer_copyright {
+    text-align: right
+}

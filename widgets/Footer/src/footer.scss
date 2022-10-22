@@ -1,0 +1,38 @@
+/*
+- project:  KarmaKit
+- name:     footer.scss
+- Version:  1.0.0
+- date:     2022-10-16
+- Author:   Karma Team
+- website:  https://karmatechhub.com
+*/
+
+.k-kit-footer{
+    @apply flex flex-col gap-9;
+
+    .k-kit-menu{
+        ul{
+            @apply list-none m-0 p-0 flex justify-center gap-3;
+        }
+
+        a{
+            @apply transition-all duration-200 ease-in-out;
+        }
+    }
+
+    &_layout{
+        @apply grid grid-cols-4 items-center;
+    }
+
+    &_social{
+        @apply flex items-center justify-center gap-2 col-span-2;
+
+        a{
+            @apply flex items-center justify-center w-12 h-12 rounded-full transition-all ease-in-out duration-200;
+        }
+    }
+
+    &_copyright{
+        @apply text-right;
+    }
+}

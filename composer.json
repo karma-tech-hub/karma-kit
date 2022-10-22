@@ -1,0 +1,23 @@
+{
+    "name": "karma/kit",
+    "description": "Karma kit Plugin is widgets kit for Elementor",
+    "autoload": {
+        "psr-4": {
+            "Karma\\Kit\\": "core/",
+            "Karma\\Widgets\\": "widgets/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Hasan Ahani",
+            "email": "hasan@karmatechhub.com"
+        }
+    ],
+    "require": {
+        "wptoolco/helper": "^1.0",
+        "hasan/codestar": "^2.2"
+    },
+    "repositories": [
+        {"type": "composer", "url": "https://karmatest.repo.repman.io"}
+    ]
+}

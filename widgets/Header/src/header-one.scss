@@ -1,0 +1,30 @@
+/*
+- project:  KarmaKit
+- name:     header-one.scss
+- Version:  1.0.0
+- date:     2022-10-20
+- Author:   Karma Team
+- website:  https://karmatechhub.com
+*/
+
+.k-kit-header{
+    @apply bg-white flex items-center py-3 gap-16;
+
+    .k-kit-menu{
+
+        > ul{
+            @apply flex list-none p-0 m-0;
+        }
+
+        a{
+            @apply transition-all ease-in-out duration-200;
+        }
+    }
+
+    &_logo{
+        @apply mr-auto flex items-center;
+    }
+
+
+
+}
