@@ -70,7 +70,8 @@ class Menu extends \Elementor\Widget_Base
     {
         parent::__construct($data, $args);
 
-        wp_register_style('k-kit-navabr-css', plugin_dir_url(__FILE__) . '/css/menu.css');
+        wp_register_style('k-kit-navabr-css', plugin_dir_url(__FILE__) . '/css/karmakit-menu.css');
+        wp_register_script('k-kit-navbar-js', plugin_dir_url(__FILE__) . '/js/karmakit-menu.js', ['elementor-frontend'], '1.0.0', true);
     }
 
     /**
@@ -78,11 +79,13 @@ class Menu extends \Elementor\Widget_Base
      */
     public function get_style_depends()
     {
-        return [
-            "k-kit-navabr-css"
-        ];
+        return ["k-kit-navabr-css"];
     }
 
+    public function get_script_depends()
+    {
+        return ['k-kit-navbar-js'];
+    }
 
     /**
      * register controls
@@ -117,6 +120,16 @@ class Menu extends \Elementor\Widget_Base
             ]
         );
 
+        $this->add_control(
+            'responsive_menu',
+            [
+                'label' => esc_html__('Select menu (responsive)', 'karmakit'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => $menu_list[0]->name,
+                'options' => $menu_list,
+            ]
+        );
+
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -145,7 +158,7 @@ class Menu extends \Elementor\Widget_Base
                     'size' => 15,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} ul li:not(li:last-child)' => 'padding-right: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} ul > li:not(li:last-child)' => 'padding-right: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
                     'menu_align' => 'start',
@@ -171,7 +184,7 @@ class Menu extends \Elementor\Widget_Base
                     'size' => 15,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} ul li:not(li:first-child)' => 'padding-left: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} ul > li:not(li:first-child)' => 'padding-left: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
                     'menu_align' => 'end',
@@ -197,10 +210,33 @@ class Menu extends \Elementor\Widget_Base
                     'size' => 15,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} ul li' => 'padding: 0 {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} ul > li' => 'padding: 0 {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
                     'menu_align' => 'center',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'submenu_width',
+            [
+                'label' => esc_html__('Submenu width', 'karmakit'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 50,
+                        'max' => 300,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 200,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} ul li ul' => 'width: {{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -299,11 +335,28 @@ class Menu extends \Elementor\Widget_Base
 
         echo wp_nav_menu([
             'menu' => $settings['menu'],
-            'depth'           => 4,
+            'depth'           => 6,
             'container'       => 'div',
             'container_class' => '',
             'container_id'    => 'karmakit-nav',
             'menu_class'      => 'navbar-nav',
-        ]);
+        ]); ?>
+
+        <div id="karmakit-nav-res-area">
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+            <?php
+            echo wp_nav_menu([
+                'menu' => $settings['responsive_menu'],
+                'depth'           => 2,
+                'container'       => '',
+                'menu_class'      => '',
+                'menu_id'         => 'karmakit-nav-res',
+            ]);
+            ?>
+        </div>
+<?php
     }
 }
