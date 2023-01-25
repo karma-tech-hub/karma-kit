@@ -15,9 +15,6 @@
     ],
     "require": {
         "wptoolco/helper": "^1.0",
-        "hasan/codestar": "^2.2"
-    },
-    "repositories": [
-        {"type": "composer", "url": "https://karmatest.repo.repman.io"}
-    ]
+        "wpify/custom-fields": "^3.7"
+    }
 }

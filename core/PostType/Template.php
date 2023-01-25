@@ -1,6 +1,8 @@
 <?php
 namespace Karma\Kit\PostType;
 
+use Carbon_Fields\Container;
+use Carbon_Fields\Field;
 use WpTool\Helper\PostType;
 
 /**
@@ -24,15 +26,21 @@ class Template extends PostType
     protected $type = 'karma-kit-template';
 
     protected $args = [
-        'public'              => true,
-        'show_ui'             => true,
-        'show_in_menu'        => true,
-        'show_in_nav_menus'   => false,
-        'exclude_from_search' => true,
-        'capability_type'     => 'post',
-        'hierarchical'        => false,
-        'menu_icon'           => 'dashicons-editor-kitchensink',
-        'supports'            => [ 'title', 'thumbnail', 'elementor' ],
+        'supports'              => array( 'title', 'editor', 'revisions', 'elementor' ),
+        'hierarchical'          => false,
+        'public'                => true,
+        'show_ui'       		=> true,
+        'show_in_menu'          => true,
+        'menu_position'         => 25,
+        'menu_icon'     		=> 'dashicons-editor-kitchensink',
+        'show_in_admin_bar'     => true,
+        'show_in_nav_menus'     => false,
+        'can_export'            => true,
+        'has_archive'   		=> false,
+        'exclude_from_search'   => true,
+        'publicly_queryable'    => true,
+        'rewrite'               => false,
+        'capability_type'       => 'page'
     ];
 
     protected $labels = [
@@ -62,17 +70,78 @@ class Template extends PostType
     protected static $templates;
 
 
+    /**
+     * template types
+     *
+     * @var string[]
+     */
+    protected $template_types = [
+        ''                  => 'Select Template Type',
+        'top-bar'           => 'Top Bar',
+        'header'            => 'Header',
+        'before-footer'     => 'Before Footer',
+        'footer'            => 'Footer',
+    ];
+
+
+    /**
+     * template display rules
+     *
+     * @var string[]
+     */
+    protected $template_display_rules = [
+        'basic-global'                   => 'Entire Website',
+        'basic-singulars'                => 'All Singulars',
+        'basic-archives'                 => 'All Archives',
+        'special-404'                    => '404 Page',
+        'special-search'                 => 'Search Page',
+        'special-blog'                   => 'Blog / Posts Page',
+        'special-front'                  => 'Front Page',
+        'special-date'                   => 'Date Archive',
+        'special-author'                 => 'Author Archive',
+        'post|all'                       => 'All Posts',
+        'post|all|archive'               => 'All Posts Archive',
+        'post|all|taxarchive|category'   => 'All Categories Archive',
+        'post|all|taxarchive|post_tag'   => 'All Tags Archive',
+        'page|all'                       => 'All Pages',
+        'e-landing-page|all'             => 'All Landing Pages',
+        'e-landing-page|all|archive'     => 'All Landing Pages Archive',
+        'elementor_library|all'          => 'All Landing Pages',
+        'elementor_library|all|archive'  => 'All Landing Pages Archive',
+        'karma-kit-template|all'         => 'All Templates',
+        'karma-kit-template|all|archive' => 'All Templates Archive'
+    ];
+
+
+    /**
+     * template user rules
+     *
+     * @var string[]
+     */
+    protected $template_user_rules = [
+        'all'           => 'All',
+        'logged-in'     => 'Logged In',
+        'logged-out'    => 'Logged Out',
+        'administrator' => 'Administrator',
+        'editor'        => 'Editor',
+        'author'        => 'Author',
+        'contributor'   => 'Contributor',
+        'subscriber'    => 'Subscriber'
+    ];
+
+
+    /**
+     * init template
+     *
+     * @return void
+     */
     public function init()
     {
         add_filter( 'single_template', [ $this, 'load_canvas_template' ] );
 
-        if( class_exists( 'CSF' ) ){
-            $this->register_metabox();
-        }
+        add_action( 'init', [$this, 'register_metabox'] );
         add_action( 'save_post', [ $this, 'sync_templates' ] , 99, 3);
         add_action( 'template_redirect', [ $this, 'block_template_frontend' ] );
-
-
     }
 
     /**
@@ -96,160 +165,6 @@ class Template extends PostType
 
         return $single_template;
     }
-
-    /**
-     * register metabox
-     *
-     * @return void
-     */
-    public function register_metabox()
-    {
-
-        $prefix = 'kk_template_options';
-
-        // Create a metabox
-        \CSF::createMetabox( $prefix, array(
-            'title'     => 'Template Options',
-            'post_type' => $this->type,
-            'data_type'          => 'unserialize',
-            'priority'              => 'high',
-        ) );
-
-
-        // Create a section
-        \CSF::createSection( $prefix, array(
-            'fields' => array(
-
-                array(
-                    'id'    => 'template_type',
-                    'type'  => 'select',
-                    'title' => 'Template Type',
-                    'options' => [
-                        'header' => 'Header',
-                        'before_footer' => 'Before Footer',
-                        'footer' => 'Footer',
-                    ]
-                ),
-
-                array(
-                    'id'    => 'display_on',
-                    'type'  => 'select',
-                    'title'  => 'Display On',
-                    'chosen'      => true,
-                    'multiple'    => true,
-                    'options'      => array(
-                        '' => 'Select',
-                        'Basic'    => array(
-                            'basic-global'      => 'Entire Website',
-                            'basic-singulars'   => 'All Singulars',
-                            'basic-archives'    => 'All Archives',
-                        ),
-                        'Special Pages'    => array(
-                            'special-404'       => '404 Page',
-                            'special-search'    => 'Search Page',
-                            'special-blog'      => 'Blog / Posts Page',
-                            'special-front'     => 'Front Page',
-                            'special-date'      => 'Date Archive',
-                            'special-author'    => 'Author Archive',
-                        ),
-                        'Posts'    => array(
-                            'post|all'          => 'All Posts',
-                            'post|all|archive'    => 'All Posts Archive',
-                            'post|all|taxarchive|category'      => 'All Categories Archive',
-                            'post|all|taxarchive|post_tag'     => 'All Tags Archive'
-                        ),
-                        'Pages'    => array(
-                            'page|all'          => 'All Pages'
-                        ),
-                        'Landing Pages'    => array(
-                            'e-landing-page|all'            => 'All Landing Pages',
-                            'e-landing-page|all|archive'    => 'All Landing Pages Archive',
-                        ),
-                        'My Templates'    => array(
-                            'elementor_library|all'            => 'All Landing Pages',
-                            'elementor_library|all|archive'    => 'All Landing Pages Archive',
-                        ),
-                        'Templates'    => array(
-                            'karma-kit-template|all'            => 'All Templates',
-                            'karma-kit-template|all|archive'    => 'All Templates Archive',
-                        ),
-                    ),
-                ),
-                array(
-                    'id'    => 'not_display_on',
-                    'type'  => 'select',
-                    'title'  => 'Do Not Display On',
-                    'chosen'      => true,
-                    'multiple'    => true,
-                    'options'      => array(
-                        '' => 'Select',
-                        'Basic'    => array(
-                            'basic-global'      => 'Entire Website',
-                            'basic-singulars'   => 'All Singulars',
-                            'basic-archives'    => 'All Archives',
-                        ),
-                        'Special Pages'    => array(
-                            'special-404'       => '404 Page',
-                            'special-search'    => 'Search Page',
-                            'special-blog'      => 'Blog / Posts Page',
-                            'special-front'     => 'Front Page',
-                            'special-date'      => 'Date Archive',
-                            'special-author'    => 'Author Archive',
-                            'special-woo-shop'  => 'Shop Page',
-                        ),
-                        'Posts'    => array(
-                            'post|all'          => 'All Posts',
-                            'post|all|archive'    => 'All Posts Archive',
-                            'post|all|taxarchive|category'      => 'All Categories Archive',
-                            'post|all|taxarchive|post_tag'     => 'All Tags Archive'
-                        ),
-                        'Pages'    => array(
-                            'page|all'          => 'All Pages'
-                        ),
-                        'Landing Pages'    => array(
-                            'e-landing-page|all'            => 'All Landing Pages',
-                            'e-landing-page|all|archive'    => 'All Landing Pages Archive',
-                        ),
-                        'My Templates'    => array(
-                            'elementor_library|all'            => 'All Landing Pages',
-                            'elementor_library|all|archive'    => 'All Landing Pages Archive',
-                        ),
-                        'Templates'    => array(
-                            'karma-kit-template|all'            => 'All Templates',
-                            'karma-kit-template|all|archive'    => 'All Templates Archive',
-                        ),
-                    ),
-                ),
-
-                array(
-                    'id'    => 'user_rule',
-                    'type'  => 'select',
-                    'chosen'      => true,
-                    'multiple'    => true,
-                    'title' => 'User Roles',
-                    'options'      => array(
-                        '' => 'Select',
-                        'Basic'    => array(
-                            'all'           => 'All',
-                            'logged-in'     => 'Logged In',
-                            'logged-out'    => 'Logged Out',
-                        ),
-                        'Advanced'    => array(
-                            'administrator' => 'Administrator',
-                            'editor'        => 'Editor',
-                            'author'        => 'Author',
-                            'contributor'   => 'Contributor',
-                            'subscriber'    => 'Subscriber',
-                        ),
-                    ),
-                ),
-
-
-            )
-        ) );
-    }
-
-
 
     /**
      * redirect post
@@ -321,13 +236,14 @@ class Template extends PostType
                 while($query->have_posts()){
                     $query->the_post();
 
-                    $type           = get_post_meta(get_the_ID(), 'template_type', true);
-                    $display_on     = get_post_meta(get_the_ID(), 'display_on', true);
-                    $not_display_on = get_post_meta(get_the_ID(), 'not_display_on', true);
-                    $user_rule      = get_post_meta(get_the_ID(), 'user_rule', true);
+                    $type           = get_post_meta(get_the_ID(), 'karma_template_type', true);
+                    $display_on     = get_post_meta(get_the_ID(), 'karma_display_on', true);
+                    $not_display_on = get_post_meta(get_the_ID(), 'karma_not_display_on', true);
+                    $user_rule      = get_post_meta(get_the_ID(), 'karma_user_rule', true);
 
                     $templates[] = [
                         'id'                => get_the_ID(),
+                        'title'             => get_the_title(get_the_ID()),
                         'type'              => $type,
                         'display_on'        => $display_on,
                         'not_display_on'    => $not_display_on,
@@ -338,8 +254,92 @@ class Template extends PostType
             }
 
 
-            update_option('kk_templates', $templates);
+            update_option('karma_kit_templates', $templates);
+        }
+    }
+
+
+    /**
+     * register metabox
+     *
+     * @return void
+     */
+    public function register_metabox()
+    {
+
+        $types          = get_post_types();
+        $footers        = karma_get_current_templates('footer', 'select');
+        $headers        = karma_get_current_templates('header', 'select');
+        $top_bars       = karma_get_current_templates('top-bar', 'select');
+        $before_footers = karma_get_current_templates('before-footer', 'select');
+
+        if($types[$this->type]){
+            unset($types[$this->type]);
         }
 
+        wpify_custom_fields()->create_metabox([
+            'title'      => __('Layout Template', 'karmakit'),
+            'post_types' => $types,
+            'priority'   => 'high',
+            'items'      => [
+                array(
+                    'type'  => 'select',
+                    'title' => __( 'Top Bar', 'karmakit' ),
+                    'id'    => 'karma_top_bar',
+                    'options'    =>  $top_bars
+                ),
+                array(
+                    'type'  => 'select',
+                    'title' => __( 'Header', 'karmakit' ),
+                    'id'    => 'karma_header',
+                    'options'    =>  $headers
+                ),
+                array(
+                    'type'  => 'select',
+                    'title' => __( 'Before Footer', 'karmakit' ),
+                    'id'    => 'karma_before_footer',
+                    'options'    =>  $before_footers
+                ),
+                array(
+                    'type'  => 'select',
+                    'title' => __( 'Footer', 'karmakit' ),
+                    'id'    => 'karma_footer',
+                    'options'    =>  $footers
+                ),
+            ]
+        ]);
+
+        wpify_custom_fields()->create_metabox( array(
+
+            'title'      => __('Template Options', 'karmakit'),
+            'post_types' => array( $this->type ),
+            'priority'      => 'high',
+            'items'      => array(
+                array(
+                    'type'  => 'select',
+                    'title' => __( 'Template Type', 'karmakit' ),
+                    'id'    => 'karma_template_type',
+                    'options'    =>  convert_array_select_options($this->template_types)
+                ),
+                array(
+                    'type'  => 'multi_select',
+                    'title' => __( 'Display On', 'karmakit' ),
+                    'id'    => 'karma_display_on',
+                    'options'    =>  convert_array_select_options($this->template_display_rules)
+                ),
+                array(
+                    'type'  => 'multi_select',
+                    'title' => __( 'Not Display On', 'karmakit' ),
+                    'id'    => 'karma_not_display_on',
+                    'options'    =>  convert_array_select_options($this->template_display_rules)
+                ),
+                array(
+                    'type'  => 'multi_select',
+                    'title' => __( 'User Rule', 'karmakit' ),
+                    'id'    => 'karma_user_rule',
+                    'options'    =>  convert_array_select_options($this->template_user_rules)
+                ),
+            ),
+        ) );
     }
 }

@@ -20,11 +20,11 @@ if(!function_exists('karma_kit')){
 }
 
 
-if(!function_exists('kk_get_header_ids')){
+if(!function_exists('karma_get_current_templates')){
 
-    function kk_get_current_template_ids($type = 'header')
+    function karma_get_current_templates($type = 'header', $result_type = 'ids')
     {
-        $templates = get_option('kk_templates');
+        $templates = get_option('karma_kit_templates');
 
         $result = [];
 
@@ -35,8 +35,18 @@ if(!function_exists('kk_get_header_ids')){
                     $display_on         = parse_template_display_condition($template['id'], $template['display_on']);
                     $display_on_user    = parse_template_display_user_condition($template['user_rule']);
 
+                    if($result_type == 'select'){
+                        $result[] = [
+                            'label' => $template['title'],
+                            'value' => absint($template['id']),
+                        ];
+                    }
                     if(!$not_display_on && $display_on && $display_on_user){
-                        $result[] = absint($template['id']);
+
+                        if($result_type == 'ids'){
+                            $result[] = absint($template['id']);
+                        }
+
                     }
                 }
             }
@@ -227,3 +237,11 @@ if(!function_exists('parse_template_display_user_condition')){
     }
 }
 
+function convert_array_select_options($array){
+    return array_map(function($value, $key) {
+        return [
+            'label' => $value,
+            'value' => $key,
+        ];
+    }, $array, array_keys($array));
+}
