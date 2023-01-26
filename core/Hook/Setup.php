@@ -19,6 +19,7 @@ class Setup extends \WpTool\Helper\Hook
     public function register()
     {
         $this->action('after_setup_theme', 'register_menu');
+        $this->action('init', 'load_text_domain');
     }
 
 
@@ -34,5 +35,16 @@ class Setup extends \WpTool\Helper\Hook
                 'k-kit-menu' => __('Karma Kit Menu', 'karmakit'),
             )
         );
+    }
+
+
+    /**
+     * load text domain
+     *
+     * @return void
+     */
+    public function load_text_domain()
+    {
+        load_plugin_textdomain('karmakit', false, KARMA_KIT_PATH . '/lang/');
     }
 }
