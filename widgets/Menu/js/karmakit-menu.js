@@ -6,11 +6,12 @@
  *
  */
 
-
-document.querySelector("#karmakit-nav-res-area input").addEventListener("click", () => {
-    if (document.querySelector('#karmakit-nav-res-area input').checked) {
-        document.querySelector('body').style.overflow = 'hidden';
-    } else {
-        document.querySelector('body').style.overflow = 'initial';
-    }
-})
+if (document.querySelector("#karmakit-nav-res-area input")) {
+    document.querySelector("#karmakit-nav-res-area input").addEventListener("click", () => {
+        if (document.querySelector('#karmakit-nav-res-area input').checked) {
+            document.querySelector('body').style.overflow = 'hidden';
+        } else {
+            document.querySelector('body').style.overflow = 'initial';
+        }
+    })
+}
