@@ -6,7 +6,8 @@
   "scripts": {
     "serve": "mix watch",
     "build": "mix --production",
-    "lang": "grunt lang"
+    "lang": "grunt lang",
+    "release": "grunt release"
   },
   "authors": [
     {
@@ -19,6 +20,9 @@
     "css-loader": "^6.7.1",
     "fast-glob": "^3.2.12",
     "fontagon": "^1.1.1",
+    "grunt": "^1.5.3",
+    "grunt-contrib-compress": "^2.0.0",
+    "grunt-wp-i18n": "^1.0.3",
     "laravel-mix": "^6.0.49",
     "laravel-mix-banner": "^0.1.4",
     "sass": "^1.55.0",

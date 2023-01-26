@@ -1,0 +1,231 @@
+# Copyright (C) 2023 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/karma-kit\n"
+"POT-Creation-Date: 2023-01-26 08:53:17+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2023-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: grunt-wp-i18n 1.0.3\n"
+
+#: core/Hook/Admin.php:32 core/Hook/Admin.php:33
+msgid "Karma Template"
+msgstr ""
+
+#: core/Hook/Elementor.php:63
+msgid "Karma Kit"
+msgstr ""
+
+#: core/Hook/Setup.php:34
+msgid "Karma Kit Menu"
+msgstr ""
+
+#: core/PostType/Template.php:281
+msgid "Layout Template"
+msgstr ""
+
+#: core/PostType/Template.php:287
+msgid "Top Bar"
+msgstr ""
+
+#: core/PostType/Template.php:293 core/View/template-metabox.php:61
+#: widgets/Header/Header.php:24 widgets/Header/Header.php:35
+msgid "Header"
+msgstr ""
+
+#: core/PostType/Template.php:299 core/View/template-metabox.php:62
+msgid "Before Footer"
+msgstr ""
+
+#: core/PostType/Template.php:305 core/View/template-metabox.php:63
+#: widgets/Footer/Footer.php:24 widgets/Footer/Footer.php:35
+msgid "Footer"
+msgstr ""
+
+#: core/PostType/Template.php:314
+msgid "Template Options"
+msgstr ""
+
+#: core/PostType/Template.php:320
+msgid "Template Type"
+msgstr ""
+
+#: core/PostType/Template.php:326
+msgid "Display On"
+msgstr ""
+
+#: core/PostType/Template.php:332
+msgid "Not Display On"
+msgstr ""
+
+#: core/PostType/Template.php:338
+msgid "User Rule"
+msgstr ""
+
+#: core/View/template-metabox.php:56
+msgid "Type of Template"
+msgstr ""
+
+#: core/View/template-metabox.php:60
+msgid "Select Option"
+msgstr ""
+
+#: source.php:71
+msgid "Remote"
+msgstr ""
+
+#: vendor/wpify/custom-fields/src/Implementations/AbstractImplementation.php:448
+msgid "Item"
+msgstr ""
+
+#: vendor/wpify/custom-fields/src/Implementations/WooCommerceSettings.php:80
+msgid "Your settings have been saved."
+msgstr ""
+
+#: vendor/wptoolco/helper/src/Rest.php:204
+msgid "Access Denied"
+msgstr ""
+
+#: widgets/Footer/Footer.php:85 widgets/Footer/Footer.php:95
+#: widgets/Header/Header.php:84 widgets/Header/Header.php:94
+msgid "Layout"
+msgstr ""
+
+#: widgets/Footer/Footer.php:108 widgets/Header/Header.php:107
+msgid "Style"
+msgstr ""
+
+#: widgets/Footer/Footer.php:124 widgets/Footer/Footer.php:141
+#: widgets/Footer/Footer.php:255 widgets/Header/Header.php:123
+#: widgets/Header/Header.php:140 widgets/Header/Header.php:234
+#: widgets/Logo/Logo.php:26 widgets/Logo/Logo.php:56
+msgid "Logo"
+msgstr ""
+
+#: widgets/Footer/Footer.php:132 widgets/Header/Header.php:131
+msgid "Show Logo"
+msgstr ""
+
+#: widgets/Footer/Footer.php:152 widgets/Header/Header.php:151
+msgid "Logo Url"
+msgstr ""
+
+#: widgets/Footer/Footer.php:163 widgets/Footer/Footer.php:171
+#: widgets/Footer/Footer.php:350
+msgid "Copyright"
+msgstr ""
+
+#: widgets/Footer/Footer.php:180 widgets/Footer/Footer.php:202
+#: widgets/Footer/Footer.php:389 widgets/Header/Header.php:162
+#: widgets/Header/Header.php:184 widgets/Header/Header.php:246
+msgid "Nav"
+msgstr ""
+
+#: widgets/Footer/Footer.php:189 widgets/Header/Header.php:171
+msgid "Show Nav"
+msgstr ""
+
+#: widgets/Footer/Footer.php:215 widgets/Footer/Footer.php:267
+msgid "Social"
+msgstr ""
+
+#: widgets/Footer/Footer.php:226
+msgid "Icon"
+msgstr ""
+
+#: widgets/Footer/Footer.php:235
+msgid "Url"
+msgstr ""
+
+#: widgets/Footer/Footer.php:243
+msgid "Social Media"
+msgstr ""
+
+#: widgets/Footer/Footer.php:279
+msgid "Normal"
+msgstr ""
+
+#: widgets/Footer/Footer.php:286 widgets/Footer/Footer.php:320
+msgid "Social Color"
+msgstr ""
+
+#: widgets/Footer/Footer.php:298 widgets/Footer/Footer.php:332
+msgid "Social Background"
+msgstr ""
+
+#: widgets/Footer/Footer.php:313
+msgid "Hover"
+msgstr ""
+
+#: widgets/Footer/Footer.php:373
+msgid "Copyright Color"
+msgstr ""
+
+#: widgets/Footer/Footer.php:399 widgets/Header/Header.php:256
+#: widgets/Header/Header.php:387
+msgid "Padding"
+msgstr ""
+
+#: widgets/Footer/Footer.php:417 widgets/Header/Header.php:274
+msgid "Nav Color"
+msgstr ""
+
+#: widgets/Footer/Footer.php:428 widgets/Header/Header.php:285
+msgid "Nav Hover Color"
+msgstr ""
+
+#: widgets/Header/Header.php:197 widgets/Header/Header.php:313
+msgid "Button"
+msgstr ""
+
+#: widgets/Header/Header.php:206
+msgid "Show Button"
+msgstr ""
+
+#: widgets/Header/Header.php:215
+msgid "Button Text"
+msgstr ""
+
+#: widgets/Header/Header.php:224
+msgid "Button Url"
+msgstr ""
+
+#: widgets/Header/Header.php:321
+msgid "Button Background Color"
+msgstr ""
+
+#: widgets/Header/Header.php:333
+msgid "Button Color"
+msgstr ""
+
+#: widgets/Header/Header.php:365
+msgid "Border Radius"
+msgstr ""
+
+#: widgets/Logo/Logo.php:39
+msgid "View"
+msgstr ""
+
+#: widgets/Logo/Logo.php:48
+msgid "Custom Logo"
+msgstr ""
+
+#: widgets/Logo/Logo.php:70
+msgid "Logo Width"
+msgstr ""
