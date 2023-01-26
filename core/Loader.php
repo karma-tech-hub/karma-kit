@@ -174,7 +174,9 @@ class Loader
         );
 
         $args = wp_parse_args( $args, $defaults );
-        wp_nav_menu($args);
+        if(has_nav_menu($name)){
+            wp_nav_menu($args);
+        }
 
     }
 
