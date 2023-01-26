@@ -25,7 +25,6 @@
 }
 
 #karmakit-nav li {
-    color: #555;
     display: block;
     float: left;
     padding-top: 1rem;
@@ -41,7 +40,7 @@
 
 #karmakit-nav li.menu-item-has-children>a:after {
     content: "";
-    border: solid #222;
+    border: solid;
     border-width: 0 2px 2px 0;
     display: inline-block;
     padding: 3px;
@@ -51,10 +50,6 @@
 
 #karmakit-nav li li.menu-item-has-children>a:after {
     transform: rotate(-45deg);
-}
-
-#karmakit-nav li a {
-    color: #555;
 }
 
 #karmakit-nav li:hover,
@@ -185,13 +180,12 @@
     margin: -100px 0 0 -50px;
     padding: 50px;
     padding-top: 155px;
-    background: #ededed;
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     transform-origin: 0% 0%;
     transform: translate(-100%, 0);
     transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
-    height: 100vh;
+    height: 150vh;
 }
 
 #karmakit-nav-res li.menu-item-has-children ul {
@@ -207,7 +201,6 @@
 #karmakit-nav-res a {
     padding: 10px 0;
     font-size: 22px;
-    color: #333;
 }
 
 #karmakit-nav-res-area input:checked~ul {

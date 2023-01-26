@@ -268,13 +268,11 @@ class Menu extends \Elementor\Widget_Base
             ]
         );
 
-        $this->end_controls_section();
-
-        $this->start_controls_section(
-            'mainmenu_style',
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
             [
-                'label' => esc_html__('Main menu', 'karmakit'),
-                'tab' => \Elementor\Controls_Manager::TAB_STYLE
+                'name' => 'menu_typography',
+                'selector' => '{{WRAPPER}} li a',
             ]
         );
 
@@ -285,37 +283,31 @@ class Menu extends \Elementor\Widget_Base
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} ul li a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} li.menu-item-has-children > a::after' => 'border-color: {{VALUE}}',
                 ],
+                'default' => '#555555',
             ]
         );
 
         $this->end_controls_section();
 
         $this->start_controls_section(
-            'submenu_style',
+            'responsive_style',
             [
-                'label' => esc_html__('Submenu', 'karmakit'),
+                'label' => esc_html__('Responsive', 'karmakit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE
             ]
         );
 
-        $this->end_controls_section();
-
-        $this->start_controls_section(
-            'mobile_mainmenu_style',
+        $this->add_control(
+            'responsive_back_color',
             [
-                'label' => esc_html__('Mobile menu', 'karmakit'),
-                'tab' => \Elementor\Controls_Manager::TAB_STYLE
-            ]
-        );
-
-        $this->end_controls_section();
-
-        $this->start_controls_section(
-            'mobile_submenu_style',
-            [
-                'label' => esc_html__('Mobile Submenu', 'karmakit'),
-                'tab' => \Elementor\Controls_Manager::TAB_STYLE
+                'label' => esc_html__('Background color', 'karmakit'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} #karmakit-nav-res' => 'background-color: {{VALUE}}',
+                ],
+                'default' => '#ededed',
             ]
         );
 

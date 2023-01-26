@@ -14,6 +14,3 @@ document.querySelector("#karmakit-nav-res-area input").addEventListener("click",
         document.querySelector('body').style.overflow = 'initial';
     }
 })
-
-
-
