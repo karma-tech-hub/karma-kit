@@ -1,0 +1,241 @@
+/**
+ * @project        Karma Kit
+ * @author         Karma Team
+ * @website        https://karamtechhub.com
+ * @version       1.0.0
+ *
+ */
+
+/* #karmakit-nav ul {
+    display: flex;
+    padding: 0;
+    list-style: none;
+} */
+
+
+#karmakit-nav a {
+    text-decoration: none;
+}
+
+#karmakit-nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+#karmakit-nav li {
+    display: block;
+    float: left;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    position: relative;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+#karmakit-nav li li {
+    padding: 1rem;
+}
+
+#karmakit-nav li.menu-item-has-children>a:after {
+    content: "";
+    border: solid;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    margin: 0 0 1.5px 10px;
+}
+
+#karmakit-nav li li.menu-item-has-children>a:after {
+    transform: rotate(-45deg);
+}
+
+#karmakit-nav li:hover,
+#karmakit-nav li:focus-within {
+    color: #000;
+    cursor: pointer;
+}
+
+#karmakit-nav li:focus-within a {
+    outline: none;
+}
+
+#karmakit-nav ul li ul {
+    background-color: #fff;
+    visibility: hidden;
+    opacity: 0;
+    min-width: 5rem;
+    position: absolute;
+    transition: all 0.5s ease;
+    margin-top: 1rem;
+    left: 0;
+    display: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.07);
+    border-radius: 5px;
+}
+
+#karmakit-nav ul ul ul {
+    left: 200px;
+    top: 0;
+}
+
+#karmakit-nav ul li:hover>ul,
+#karmakit-nav ul li:focus-within>ul,
+#karmakit-nav ul li ul:hover,
+#karmakit-nav ul li ul:focus {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+    z-index: 9999999;
+}
+
+#karmakit-nav ul li ul li {
+    clear: both;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+}
+
+#karmakit-nav ul li ul li:last-child {
+    border-bottom: 0;
+}
+
+
+/* Hamburger Main Menu */
+#karmakit-nav-res-area {
+    display: block;
+    position: relative;
+    top: 0;
+    left: 40px;
+    z-index: 1;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#karmakit-nav-res-area li {
+    text-decoration: none;
+    padding-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+#karmakit-nav-res-area li:hover {
+    color: tomato;
+}
+
+#karmakit-nav-res-area input {
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 2;
+    -webkit-touch-callout: none;
+}
+
+#karmakit-nav-res-area span {
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    background-color: #676a6c;
+    border-radius: 3px;
+    z-index: 1;
+    transform-origin: 4px 0px;
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+        background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+        opacity 0.55s ease;
+}
+
+#karmakit-nav-res-area span:first-child {
+    transform-origin: 0% 0%;
+}
+
+#karmakit-nav-res-area span:nth-last-child(2) {
+    transform-origin: 0% 100%;
+}
+
+#karmakit-nav-res-area input:checked~span {
+    opacity: 1;
+    transform: rotate(45deg) translate(-2px, -1px);
+    background: #232323;
+}
+
+#karmakit-nav-res-area input:checked~span:nth-last-child(3) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+#karmakit-nav-res-area input:checked~span:nth-last-child(2) {
+    transform: rotate(-45deg) translate(0, -1px);
+}
+
+#karmakit-nav-res {
+    position: absolute;
+    width: 300px;
+    margin: -100px 0 0 -50px;
+    padding: 50px;
+    padding-top: 155px;
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    transform-origin: 0% 0%;
+    transform: translate(-100%, 0);
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+    height: 150vh;
+}
+
+#karmakit-nav-res li.menu-item-has-children ul {
+    display: none;
+}
+
+#karmakit-nav-res li.menu-item-has-children:focus ul {
+    display: block;
+    list-style: none;
+    padding-left: 20px;
+}
+
+#karmakit-nav-res a {
+    padding: 10px 0;
+    font-size: 22px;
+}
+
+#karmakit-nav-res-area input:checked~ul {
+    transform: none;
+}
+
+/* Hamburger Main Menu */
+
+
+/* Responsive */
+
+@media (max-width: 575.98px) {}
+
+@media (min-width: 768px) {
+    #karmakit-nav {
+        display: block;
+    }
+
+    #karmakit-nav-res-area {
+        display: none;
+    }
+}
+
+@media (max-width: 767.98px) {
+    #karmakit-nav {
+        display: none;
+    }
+
+    #karmakit-nav-res-area {
+        display: block;
+    }
+}
+
+@media (max-width: 991.98px) {}
+
+@media (max-width: 1199.98px) {}
+
+@media (max-width: 1399.98px) {}
