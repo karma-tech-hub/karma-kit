@@ -71,7 +71,6 @@ class Countdown extends \Elementor\Widget_Base
         parent::__construct($data, $args);
 
         wp_register_style('k-kit-countdown-css', plugin_dir_url(__FILE__) . '/css/karmakit-countdown.css');
-        wp_register_script('k-kit-countdown-js', plugin_dir_url(__FILE__) . '/js/karmakit-countdown.js', ['elementor-frontend'], '1.0.0', true);
     }
 
     /**
@@ -80,11 +79,6 @@ class Countdown extends \Elementor\Widget_Base
     public function get_style_depends()
     {
         return ["k-kit-countdown-css"];
-    }
-
-    public function get_script_depends()
-    {
-        return ['k-kit-countdown-js'];
     }
 
     /**
@@ -105,7 +99,7 @@ class Countdown extends \Elementor\Widget_Base
         $this->add_control(
             'due_date',
             [
-                'label' => esc_html__('Due Date', 'karmakit'),
+                'label' => esc_html__('Countdown deadline', 'karmakit'),
                 'type' => \Elementor\Controls_Manager::DATE_TIME,
                 'default' => '2023-05-28 12:00'
             ]
@@ -121,6 +115,61 @@ class Countdown extends \Elementor\Widget_Base
             ]
         );
 
+        $this->add_group_control(
+			\Elementor\Group_Control_Background::get_type(),
+			[
+				'name' => 'background',
+				'types' => [ 'classic', 'gradient' ],
+				'selector' => '{{WRAPPER}} .karmakit-countdown',
+			]
+		);
+
+        $this->add_control(
+			'color',
+			[
+				'label' => esc_html__( 'Text color', 'karmakit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .countdown-notif'          => 'color: {{VALUE}}',
+					'{{WRAPPER}} .countdown-ended'          => 'color: {{VALUE}}',
+					'{{WRAPPER}} .countdown-timer-timer'    => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+        $this->add_group_control(
+			\Elementor\Group_Control_Typography::get_type(),
+			[
+				'name' => 'content_typography',
+                'selectors' => [
+					'{{WRAPPER}} .countdown-notif',
+					'{{WRAPPER}} .countdown-ended',
+					'{{WRAPPER}} .countdown-timer-timer',
+				],
+			]
+		);
+
+        $this->add_control(
+			'countdown_color',
+			[
+				'label' => esc_html__( 'Countdown color', 'karmakit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+                    '{{WRAPPER}} .karmakit-countdown .countdown-timer-timer span'   => 'color: {{VALUE}}'
+                ],
+			]
+		);
+
+        $this->add_control(
+			'countdown_backcolor',
+			[
+				'label' => esc_html__( 'Countdown background', 'karmakit' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+                    '{{WRAPPER}} .karmakit-countdown .countdown-timer-timer span'   => 'background-color: {{VALUE}}'
+                ],
+			]
+		);
 
         $this->end_controls_section();
     }
@@ -133,41 +182,36 @@ class Countdown extends \Elementor\Widget_Base
      */
     protected function render()
     {
-        $settings = $this->get_settings_for_display(); ?>
+        $settings = $this->get_settings_for_display();
+        $element_unique_id = $this->get_unique_selector(); ?>
 
         <script>
-            const newDate = new Date('<?php echo $this->get_settings('due_date'); ?>').getTime();
+            countdown = setInterval(() => {diff = new Date('<?php echo $settings['due_date']; ?>').getTime() - new Date().getTime();month = Math.floor((diff % (1000 * 60 * 60 * 24 * (365.25 / 12) * 365)) / (1000 * 60 * 60 * 24 * (365.25 / 12)));days = Math.floor(diff % (1000 * 60 * 60 * 24 * (365.25 / 12)) / (1000 * 60 * 60 * 24));hours = Math.floor(diff % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));seconds = Math.floor((diff % (1000 * 60)) / 1000);if (document.querySelector('<?php echo $element_unique_id; ?>').querySelector(".seconds")) {document.querySelector('<?php echo $element_unique_id; ?>').querySelector(".seconds").innerHTML = seconds < 10 ? '0' + seconds : seconds;document.querySelector('<?php echo $element_unique_id; ?>').querySelector(".minutes").innerHTML = minutes < 10 ? '0' + minutes : minutes;document.querySelector('<?php echo $element_unique_id; ?>').querySelector(".hours").innerHTML = hours < 10 ? '0' + hours : hours;document.querySelector('<?php echo $element_unique_id; ?>').querySelector(".days").innerHTML = days < 10 ? '0' + days : days;document.querySelector('<?php echo $element_unique_id; ?>').querySelector(".months").innerHTML = month < 10 ? '0' + month : month;}if (diff <= 0) {document.querySelector('<?php echo $element_unique_id; ?>').querySelector('.karmakit-countdown .countdown-timer').style.display = "none";document.querySelector('<?php echo $element_unique_id; ?>').querySelector('.karmakit-countdown .countdown-ended').style.display = "block";} else {document.querySelector('<?php echo $element_unique_id; ?>').querySelector('.karmakit-countdown .countdown-timer').style.display = "flex";document.querySelector('<?php echo $element_unique_id; ?>').querySelector('.karmakit-countdown .countdown-ended').style.display = "none";}}, 1000);
         </script>
 
         <div class="karmakit-countdown">
-            <div class="countdown-timer">
-                <div>
-                    <span class="number months"></span>
+            <?php if (is_admin()) : ?>
+                <div class="preload-widget">
+                    <small class="countdown-notif"><?php _e('Your timer deadline set to ', 'karmakit'); ?><?php echo $settings['due_date']; ?>.<?php echo _e(' For watching countdown time please view the page.', 'karmakit'); ?></small>
                 </div>
-                <div>
-                    <span class="number days"></span>
+            <?php else : ?>
+                <div class="countdown-timer">
+                    <div class="countdown-notif">
+                        50% OFF ON BLACK FRIDAY
+                    </div>
+                    <div class="countdown-timer-timer">
+                        <span class="number months">00</span>:
+                        <span class="number days">00</span>:
+                        <span class="number hours">00</span>:
+                        <span class="number minutes">00</span>:
+                        <span class="number seconds">00</span>
+                    </div>
                 </div>
-                <div>
-                    <span class="number hours"></span>
+                <div class="countdown-ended">
+                    <p>Party's over!</p>
                 </div>
-                <div>
-                    <span class="number minutes"></span>
-                </div>
-                <div>
-                    <span class="number seconds"></span>
-                </div>
-            </div>
-            <div class="countdown-ended">
-                <p>Party's over!</p>
-            </div>
+            <?php endif; ?>
         </div>
 
-    <?php  }
-
-    protected function content_template()
-    { ?>
-        <div class="karmakit-countdown-preview">
-            Your timer deadline set to {{{ settings.due_date }}}. For watching countdown time please view the page.
-        </div>
-<?php }
+<?php  }
 }
