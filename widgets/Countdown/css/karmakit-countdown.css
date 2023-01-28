@@ -11,13 +11,26 @@
     justify-content: center;
 }
 
-.karmakit-countdown>div {
+.karmakit-countdown .preload-widget {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.karmakit-countdown svg {
+    position: absolute;
+    left: 30px;
+    top: 12px;
+    cursor: pointer;
+}
+
+.karmakit-countdown .countdown-timer {
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 10px;
 }
 
 .karmakit-countdown .countdown-ended {
@@ -26,12 +39,6 @@
 
 .karmakit-countdown .countdown-notif {
     padding-right: 25px;
-}
-
-.karmakit-countdown .countdown-timer-timer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .karmakit-countdown .countdown-timer-timer span {
@@ -48,3 +55,22 @@
 .karmakit-countdown .countdown-timer-timer span:first-child {
     margin-left: 0;
 }
+
+@media (max-width: 575.98px) {}
+
+@media (max-width: 767.98px) {
+    .karmakit-countdown .countdown-timer {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .karmakit-countdown .countdown-notif {
+        padding-right: 0;
+        padding-bottom: 20px;
+    }
+}
+
+@media (max-width: 991.98px) {}
+
+@media (max-width: 1199.98px) {}
