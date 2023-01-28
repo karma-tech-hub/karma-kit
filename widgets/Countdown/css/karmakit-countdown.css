@@ -1,0 +1,76 @@
+/**
+ * @project        Karma Kit
+ * @author         Karma Team
+ * @website        https://karamtechhub.com
+ * @version       1.0.0
+ *
+ */
+
+.karmakit-countdown {
+    display: flex;
+    justify-content: center;
+}
+
+.karmakit-countdown .preload-widget {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.karmakit-countdown svg {
+    position: absolute;
+    left: 30px;
+    top: 12px;
+    cursor: pointer;
+}
+
+.karmakit-countdown .countdown-timer {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.karmakit-countdown .countdown-ended {
+    display: none;
+}
+
+.karmakit-countdown .countdown-notif {
+    padding-right: 25px;
+}
+
+.karmakit-countdown .countdown-timer-timer span {
+    padding: 5px 7px;
+    border-radius: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.karmakit-countdown .countdown-timer-timer span:last-child {
+    margin-right: 0;
+}
+
+.karmakit-countdown .countdown-timer-timer span:first-child {
+    margin-left: 0;
+}
+
+@media (max-width: 575.98px) {}
+
+@media (max-width: 767.98px) {
+    .karmakit-countdown .countdown-timer {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .karmakit-countdown .countdown-notif {
+        padding-right: 0;
+        padding-bottom: 20px;
+    }
+}
+
+@media (max-width: 991.98px) {}
+
+@media (max-width: 1199.98px) {}
