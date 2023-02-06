@@ -113,7 +113,7 @@ class Menu extends \Elementor\Widget_Base
         $this->add_control(
             'menu',
             [
-                'label' => esc_html__('Select menu', 'karmakit'),
+                'label' => esc_html__('Menu', 'karmakit'),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => $menu_list[0]->name,
                 'options' => $menu_list,
@@ -123,7 +123,7 @@ class Menu extends \Elementor\Widget_Base
         $this->add_control(
             'responsive_menu',
             [
-                'label' => esc_html__('Select menu (responsive)', 'karmakit'),
+                'label' => esc_html__('Responsive menu', 'karmakit'),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => $menu_list[0]->name,
                 'options' => $menu_list,
@@ -136,6 +136,37 @@ class Menu extends \Elementor\Widget_Base
             'general_style',
             [
                 'label' => esc_html__('General', 'karmakit'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Typography::get_type(),
+            [
+                'name' => 'menu_typography',
+                'selector' => '{{WRAPPER}} #karmakit-nav li a',
+                'devices' => ['desktop', 'tablet', 'mobile'],
+            ]
+        );
+
+        $this->add_control(
+            'show_seperator',
+            [
+                'label' => esc_html__('Show seperator', 'karmakit'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Show', 'karmakit'),
+                'label_off' => esc_html__('Hide', 'karmakit'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'mainmenu_desktop_style',
+            [
+                'label' => esc_html__('Main Menu', 'karmakit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE
             ]
         );
@@ -155,10 +186,10 @@ class Menu extends \Elementor\Widget_Base
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 15,
+                    'size' => 0,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} ul > li:not(li:last-child)' => 'padding-right: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} #karmakit-nav ul > li:not(li:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
                     'menu_align' => 'start',
@@ -181,10 +212,10 @@ class Menu extends \Elementor\Widget_Base
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 15,
+                    'size' => 0,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} ul > li:not(li:first-child)' => 'padding-left: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} #karmakit-nav ul > li:not(li:first-child)' => 'margin-left: {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
                     'menu_align' => 'end',
@@ -207,10 +238,10 @@ class Menu extends \Elementor\Widget_Base
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 15,
+                    'size' => 0,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} ul > li' => 'padding: 0 {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} #karmakit-nav ul > li' => 'margin: 0 {{SIZE}}{{UNIT}};',
                 ],
                 'condition' => [
                     'menu_align' => 'center',
@@ -219,24 +250,24 @@ class Menu extends \Elementor\Widget_Base
         );
 
         $this->add_control(
-            'submenu_width',
+            'vertical_padding',
             [
-                'label' => esc_html__('Submenu width', 'karmakit'),
+                'label' => esc_html__('Vertical padding', 'karmakit'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range' => [
                     'px' => [
-                        'min' => 50,
-                        'max' => 300,
+                        'min' => 0,
+                        'max' => 100,
                         'step' => 1,
                     ],
                 ],
                 'default' => [
                     'unit' => 'px',
-                    'size' => 200,
+                    'size' => 16,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} ul li ul' => 'width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} #karmakit-nav > ul > li' => 'padding-top:{{SIZE}}{{UNIT}};padding-bottom:{{SIZE}}{{UNIT}};',
                 ],
             ]
         );
@@ -263,16 +294,8 @@ class Menu extends \Elementor\Widget_Base
                 'default' => 'start',
                 'toggle' => true,
                 'selectors' => [
-                    '{{WRAPPER}} .navbar-nav' => 'justify-content: {{VALUE}};',
+                    '{{WRAPPER}} #karmakit-nav .navbar-nav' => 'justify-content: {{VALUE}};',
                 ],
-            ]
-        );
-
-        $this->add_group_control(
-            \Elementor\Group_Control_Typography::get_type(),
-            [
-                'name' => 'menu_typography',
-                'selector' => '{{WRAPPER}} li a',
             ]
         );
 
@@ -282,10 +305,126 @@ class Menu extends \Elementor\Widget_Base
                 'label' => esc_html__('Color', 'karmakit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} ul li a' => 'color: {{VALUE}}',
-                    '{{WRAPPER}} li.menu-item-has-children > a::after' => 'border-color: {{VALUE}}',
+                    '{{WRAPPER}} #karmakit-nav > ul > li a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} #karmakit-nav > ul > li.menu-item-has-children > a::after' => 'border-color: {{VALUE}}',
                 ],
                 'default' => '#555555',
+            ]
+        );
+
+        $this->add_control(
+            'mainmenu_backcolor',
+            [
+                'label' => esc_html__('Background color', 'karmakit'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} #karmakit-nav > ul > li' => 'background-color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'mainmenu_hover_color',
+            [
+                'label' => esc_html__('Hover color', 'karmakit'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} #karmakit-nav > ul > li:hover > a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} #karmakit-nav > ul > li.menu-item-has-children:hover > a::after' => 'border-color: {{VALUE}}',
+                ],
+                'default' => '#555555',
+            ]
+        );
+
+        $this->add_control(
+            'mainmenu_hover_backcolor',
+            [
+                'label' => esc_html__('Hover back-color', 'karmakit'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} #karmakit-nav > ul > li:hover' => 'background-color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'submenu_desktop_style',
+            [
+                'label' => esc_html__('SubMenu', 'karmakit'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE
+            ]
+        );
+
+        $this->add_control(
+            'submenu_width',
+            [
+                'label' => esc_html__('Submenu width', 'karmakit'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 50,
+                        'max' => 300,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 200,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} #karmakit-nav ul li ul' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'submenu_color',
+            [
+                'label' => esc_html__('Color', 'karmakit'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} #karmakit-nav ul ul li a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} #karmakit-nav ul ul li.menu-item-has-children > a::after' => 'border-color: {{VALUE}}',
+                ],
+                'default' => '#555555',
+            ]
+        );
+
+        $this->add_control(
+            'submenu_backcolor',
+            [
+                'label' => esc_html__('Background color', 'karmakit'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} #karmakit-nav ul ul li' => 'background-color: {{VALUE}}',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'submenu_hover_color',
+            [
+                'label' => esc_html__('Hover color', 'karmakit'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} #karmakit-nav ul ul li:hover a' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} #karmakit-nav ul ul li.menu-item-has-children:hover > a::after' => 'border-color: {{VALUE}}',
+                ],
+                'default' => '#555555',
+            ]
+        );
+
+        $this->add_control(
+            'submenu_hover_backcolor',
+            [
+                'label' => esc_html__('Hover back-color', 'karmakit'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} #karmakit-nav ul ul li:hover' => 'background-color: {{VALUE}}',
+                ],
             ]
         );
 
@@ -296,6 +435,18 @@ class Menu extends \Elementor\Widget_Base
             [
                 'label' => esc_html__('Responsive', 'karmakit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE
+            ]
+        );
+
+        $this->add_control(
+            'responsive_color',
+            [
+                'label' => esc_html__('Color', 'karmakit'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} #karmakit-nav-res li a' => 'color: {{VALUE}}',
+                ],
+                'default' => '#555555',
             ]
         );
 
@@ -324,6 +475,16 @@ class Menu extends \Elementor\Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+
+        if($settings['show_seperator'] !== 'yes'):
+        ?>
+            <style>#karmakit-nav>ul>li:not(li:last-child)::after{display:none};</style>
+        <?php
+        else:
+        ?>
+            <style>#karmakit-nav>ul>li:not(li:last-child)::after{display:block};</style>
+        <?php
+        endif;
 
         echo wp_nav_menu([
             'menu' => $settings['menu'],

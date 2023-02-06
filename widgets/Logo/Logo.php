@@ -1,6 +1,7 @@
 <?php
 
 namespace Karma\Widgets\Logo;
+
 /**
  * @project     : KarmaKit
  * @version     : 1.0.0
@@ -28,7 +29,7 @@ class Logo extends \Elementor\Widget_Base
 
     public function get_categories()
     {
-        return [ KARMA_KIT_GROUP ];
+        return [KARMA_KIT_GROUP];
     }
 
     protected function register_controls()
@@ -36,7 +37,7 @@ class Logo extends \Elementor\Widget_Base
         $this->start_controls_section(
             'view',
             [
-                'label' => esc_html__( 'View', 'karmakit' ),
+                'label' => esc_html__('View', 'karmakit'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT
             ]
         );
@@ -45,7 +46,7 @@ class Logo extends \Elementor\Widget_Base
             'custom',
             [
                 'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label' => esc_html__( 'Custom Logo', 'karmakit' )
+                'label' => esc_html__('Custom Logo', 'karmakit')
             ]
         );
 
@@ -53,7 +54,7 @@ class Logo extends \Elementor\Widget_Base
             'logo',
             [
                 'type' => \Elementor\Controls_Manager::MEDIA,
-                'label' => esc_html__( 'Logo', 'karmakit' ),
+                'label' => esc_html__('Logo', 'karmakit'),
                 'default' => [
                     'url' => ELEMENTOR_URL . 'assets/img/placeholder.png',
                 ],
@@ -67,7 +68,7 @@ class Logo extends \Elementor\Widget_Base
             'logo_width',
             [
                 'type' => \Elementor\Controls_Manager::SLIDER,
-                'label' => esc_html__( 'Logo Width', 'karmakit' ),
+                'label' => esc_html__('Logo Width', 'karmakit'),
                 'range' => [
                     'px' => [
                         'min' => 0,
@@ -96,36 +97,36 @@ class Logo extends \Elementor\Widget_Base
         /**
          * init image size
          */
-        if($logo_width['size']){
+        if ($logo_width['size']) {
             $width = $logo_width['size'];
         }
 
         /**
          * use site logo
          */
-        if ( is_array($logo) ) {
+        if (is_array($logo)) {
             $url = $logo[0];
         }
 
         /**
          * use custom logo
          */
-        if($custom && $custom_logo){
+        if ($custom && $custom_logo) {
             $url = $custom_logo['url'];
         }
 
         $image = sprintf(
             "<img src='%s' alt='%s' width='%s' />",
-            $url,
+            esc_url($url),
             get_bloginfo('name'),
             $width
         );
 
-        echo sprintf('<a href="%s" class="%s" rel="home">%s</a>',
-            esc_url( home_url( '/' ) ),
+        echo sprintf(
+            '<a href="%s" class="%s" rel="home">%s</a>',
+            esc_url(home_url('/')),
             apply_filters('karma_logo_class', 'karmakit-logo'),
             $image
         );
     }
-
 }

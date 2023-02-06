@@ -1,0 +1,21 @@
+/**
+ * @project        Karma Kit
+ * @author         Karma Team
+ * @website        https://karamtechhub.com
+ * @version       1.0.0
+ *
+ */
+
+.karmakit-searchbox form {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0 10px;
+}
+
+.karmakit-searchbox form input {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
