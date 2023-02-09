@@ -24,7 +24,7 @@ class Logo extends \Elementor\Widget_Base
 
     public function get_title()
     {
-        return __('Logo', 'karmakit');
+        return __('Logo', 'karma-kit');
     }
 
     public function get_categories()
@@ -37,7 +37,7 @@ class Logo extends \Elementor\Widget_Base
         $this->start_controls_section(
             'view',
             [
-                'label' => esc_html__('View', 'karmakit'),
+                'label' => esc_html__('View', 'karma-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT
             ]
         );
@@ -46,7 +46,7 @@ class Logo extends \Elementor\Widget_Base
             'custom',
             [
                 'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label' => esc_html__('Custom Logo', 'karmakit')
+                'label' => esc_html__('Custom Logo', 'karma-kit')
             ]
         );
 
@@ -54,7 +54,7 @@ class Logo extends \Elementor\Widget_Base
             'logo',
             [
                 'type' => \Elementor\Controls_Manager::MEDIA,
-                'label' => esc_html__('Logo', 'karmakit'),
+                'label' => esc_html__('Logo', 'karma-kit'),
                 'default' => [
                     'url' => ELEMENTOR_URL . 'assets/img/placeholder.png',
                 ],
@@ -68,7 +68,7 @@ class Logo extends \Elementor\Widget_Base
             'logo_width',
             [
                 'type' => \Elementor\Controls_Manager::SLIDER,
-                'label' => esc_html__('Logo Width', 'karmakit'),
+                'label' => esc_html__('Logo Width', 'karma-kit'),
                 'range' => [
                     'px' => [
                         'min' => 0,

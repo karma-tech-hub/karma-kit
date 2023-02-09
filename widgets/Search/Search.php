@@ -21,7 +21,7 @@ class Search extends \Elementor\Widget_Base
      */
     public function get_name()
     {
-        return __('Search', 'karmakit');
+        return __('Search', 'karma-kit');
     }
 
 
@@ -32,7 +32,7 @@ class Search extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return __('Search', 'karmakit');
+        return __('Search', 'karma-kit');
     }
 
 
@@ -89,7 +89,7 @@ class Search extends \Elementor\Widget_Base
         $this->start_controls_section(
             'content',
             [
-                'label' => esc_html__('Search', 'karmakit'),
+                'label' => esc_html__('Search', 'karma-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT
             ]
         );
@@ -97,16 +97,16 @@ class Search extends \Elementor\Widget_Base
         $this->add_control(
             'placeholder',
             [
-                'label' => esc_html__('Pleceholder', 'karmakit'),
+                'label' => esc_html__('Pleceholder', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'default' => esc_html__('Search...', 'karmakit'),
+                'default' => esc_html__('Search...', 'karma-kit'),
             ]
         );
 
         $this->add_control(
             'icon',
             [
-                'label' => esc_html__('Icon', 'karmakit'),
+                'label' => esc_html__('Icon', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::ICONS,
                 'default' => [
                     'value' => 'fas fa-search',
@@ -132,7 +132,7 @@ class Search extends \Elementor\Widget_Base
         $this->start_controls_section(
             'general_style',
             [
-                'label' => esc_html__('General', 'karmakit'),
+                'label' => esc_html__('General', 'karma-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE
             ]
         );
@@ -140,7 +140,7 @@ class Search extends \Elementor\Widget_Base
         $this->add_control(
             'height',
             [
-                'label' => esc_html__('Height', 'karmakit'),
+                'label' => esc_html__('Height', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range' => [
@@ -163,7 +163,7 @@ class Search extends \Elementor\Widget_Base
         $this->add_control(
             'background_color',
             [
-                'label' => esc_html__('Background color', 'karmakit'),
+                'label' => esc_html__('Background color', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .karmakit-searchbox form' => 'background-color: {{VALUE}}'
@@ -175,7 +175,7 @@ class Search extends \Elementor\Widget_Base
         $this->add_control(
             'icon_color',
             [
-                'label' => esc_html__('Icon color', 'karmakit'),
+                'label' => esc_html__('Icon color', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .karmakit-searchbox form label' => 'color: {{VALUE}}'
@@ -187,7 +187,7 @@ class Search extends \Elementor\Widget_Base
         $this->add_control(
             'text_color',
             [
-                'label' => esc_html__('Text color', 'karmakit'),
+                'label' => esc_html__('Text color', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .karmakit-searchbox form input' => 'color: {{VALUE}}'
@@ -199,7 +199,7 @@ class Search extends \Elementor\Widget_Base
         $this->add_control(
             'placeholder_color',
             [
-                'label' => esc_html__('Placeholder color', 'karmakit'),
+                'label' => esc_html__('Placeholder color', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .karmakit-searchbox form input::placeholder' => 'color: {{VALUE}}'
@@ -211,7 +211,7 @@ class Search extends \Elementor\Widget_Base
         $this->add_control(
             'border_radius',
             [
-                'label' => esc_html__('Border radius', 'karmakit'),
+                'label' => esc_html__('Border radius', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
@@ -223,7 +223,7 @@ class Search extends \Elementor\Widget_Base
         $this->add_control(
             'padding',
             [
-                'label' => esc_html__('Padding', 'karmakit'),
+                'label' => esc_html__('Padding', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [

@@ -1,5 +1,7 @@
 <?php
+
 namespace Karma\Widgets\Footer;
+
 use Elementor\Repeater;
 
 /**
@@ -21,7 +23,7 @@ class Footer extends \Elementor\Widget_Base
      */
     public function get_name()
     {
-        return __('Footer', 'karmakit');
+        return __('Footer', 'karma-kit');
     }
 
 
@@ -32,7 +34,7 @@ class Footer extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return __('Footer', 'karmakit');
+        return __('Footer', 'karma-kit');
     }
 
 
@@ -57,14 +59,14 @@ class Footer extends \Elementor\Widget_Base
     {
         parent::__construct($data, $args);
 
-        wp_register_style( 'k-kit-footer', plugin_dir_url( __FILE__ ) . '/css/footer.css' );
-
+        wp_register_style('k-kit-footer', plugin_dir_url(__FILE__) . '/css/footer.css');
     }
 
     /**
      * @return string[]
      */
-    public function get_style_depends(){
+    public function get_style_depends()
+    {
 
         return [
             "k-kit-footer"
@@ -82,7 +84,7 @@ class Footer extends \Elementor\Widget_Base
         $this->start_controls_section(
             'layouts',
             [
-                'label' => esc_html__( 'Layout', 'karmakit' ),
+                'label' => esc_html__('Layout', 'karma-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT
             ]
         );
@@ -92,7 +94,7 @@ class Footer extends \Elementor\Widget_Base
             'layout',
             [
                 'type' => \Elementor\Controls_Manager::SELECT,
-                'label' => esc_html__( 'Layout', 'karmakit' ),
+                'label' => esc_html__('Layout', 'karma-kit'),
                 'options' => [
                     'one' => 'Layout One',
                 ],
@@ -105,7 +107,7 @@ class Footer extends \Elementor\Widget_Base
             'style',
             [
                 'type' => \Elementor\Controls_Manager::SELECT,
-                'label' => esc_html__( 'Style', 'karmakit' ),
+                'label' => esc_html__('Style', 'karma-kit'),
                 'options' => [
                     'style-one' => 'Style One',
                     'style-two' => 'Style Two',
@@ -121,7 +123,7 @@ class Footer extends \Elementor\Widget_Base
         $this->start_controls_section(
             'logo_section',
             [
-                'label' => esc_html__( 'Logo', 'karmakit' ),
+                'label' => esc_html__('Logo', 'karma-kit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT
             ]
         );
@@ -129,7 +131,7 @@ class Footer extends \Elementor\Widget_Base
             'show_logo',
             [
                 'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label' => esc_html__( 'Show Logo', 'karmakit' ),
+                'label' => esc_html__('Show Logo', 'karma-kit'),
                 'default' => 'yes'
             ]
         );
@@ -138,7 +140,7 @@ class Footer extends \Elementor\Widget_Base
             'logo',
             [
                 'type' => \Elementor\Controls_Manager::MEDIA,
-                'label' => esc_html__( 'Logo', 'karmakit' ),
+                'label' => esc_html__('Logo', 'karma-kit'),
                 'default' => [
                     'url' => KARMA_KIT_URL . 'widgets/Header/img/logo.png'
                 ]
@@ -149,7 +151,7 @@ class Footer extends \Elementor\Widget_Base
             'logo_url',
             [
                 'type' => \Elementor\Controls_Manager::URL,
-                'label' => esc_html__( 'Logo Url', 'karmakit' ),
+                'label' => esc_html__('Logo Url', 'karma-kit'),
             ]
         );
 
@@ -160,7 +162,7 @@ class Footer extends \Elementor\Widget_Base
         $this->start_controls_section(
             'copyright_section',
             [
-                'label' => esc_html__( 'Copyright', 'karmakit' ),
+                'label' => esc_html__('Copyright', 'karma-kit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT
             ]
         );
@@ -168,7 +170,7 @@ class Footer extends \Elementor\Widget_Base
             'copyright',
             [
                 'type' => \Elementor\Controls_Manager::WYSIWYG,
-                'label' => esc_html__( 'Copyright', 'karmakit' ),
+                'label' => esc_html__('Copyright', 'karma-kit'),
                 'default' => '© 2000-2021, All Rights Reserved'
             ]
         );
@@ -177,7 +179,7 @@ class Footer extends \Elementor\Widget_Base
         $this->start_controls_section(
             'nav_section',
             [
-                'label' => esc_html__( 'Nav', 'karmakit' ),
+                'label' => esc_html__('Nav', 'karma-kit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT
             ]
         );
@@ -186,20 +188,20 @@ class Footer extends \Elementor\Widget_Base
             'show_nav',
             [
                 'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label' => esc_html__( 'Show Nav', 'karmakit' ),
+                'label' => esc_html__('Show Nav', 'karma-kit'),
                 'default' => 'yes'
             ]
         );
 
 
-        $menus = get_terms( 'nav_menu' );
-        $menus = array_combine( wp_list_pluck( $menus, 'term_id' ), wp_list_pluck( $menus, 'name' ) );
+        $menus = get_terms('nav_menu');
+        $menus = array_combine(wp_list_pluck($menus, 'term_id'), wp_list_pluck($menus, 'name'));
 
         $this->add_control(
             'nav',
             [
                 'type' => \Elementor\Controls_Manager::SELECT,
-                'label' => esc_html__( 'Nav', 'karmakit' ),
+                'label' => esc_html__('Nav', 'karma-kit'),
                 'options' => $menus
             ]
         );
@@ -212,7 +214,7 @@ class Footer extends \Elementor\Widget_Base
         $this->start_controls_section(
             'social_section',
             [
-                'label' => esc_html__( 'Social', 'karmakit' ),
+                'label' => esc_html__('Social', 'karma-kit'),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT
             ]
         );
@@ -223,7 +225,7 @@ class Footer extends \Elementor\Widget_Base
             'icon',
             [
                 'type' => \Elementor\Controls_Manager::ICONS,
-                'label' => esc_html__( 'Icon', 'karmakit' )
+                'label' => esc_html__('Icon', 'karma-kit')
             ]
         );
 
@@ -232,7 +234,7 @@ class Footer extends \Elementor\Widget_Base
             'url',
             [
                 'type' => \Elementor\Controls_Manager::URL,
-                'label' => esc_html__( 'Url', 'karmakit' )
+                'label' => esc_html__('Url', 'karma-kit')
             ]
         );
 
@@ -240,7 +242,7 @@ class Footer extends \Elementor\Widget_Base
             'socials',
             [
                 'type' => \Elementor\Controls_Manager::REPEATER,
-                'label' => esc_html__( 'Social Media', 'karmakit' ),
+                'label' => esc_html__('Social Media', 'karma-kit'),
                 'fields' => $repeater->get_controls()
             ]
         );
@@ -252,7 +254,7 @@ class Footer extends \Elementor\Widget_Base
         $this->start_controls_section(
             'logo_style',
             [
-                'label' => esc_html__( 'Logo', 'karmakit' ),
+                'label' => esc_html__('Logo', 'karma-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -264,7 +266,7 @@ class Footer extends \Elementor\Widget_Base
         $this->start_controls_section(
             'social_style',
             [
-                'label' => esc_html__( 'Social', 'karmakit' ),
+                'label' => esc_html__('Social', 'karma-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -276,14 +278,14 @@ class Footer extends \Elementor\Widget_Base
         $this->start_controls_tab(
             'social_style_normal',
             [
-                'label' => esc_html__( 'Normal', 'karmakit' ),
+                'label' => esc_html__('Normal', 'karma-kit'),
             ]
         );
 
         $this->add_control(
             'social_color',
             [
-                'label' => esc_html__( 'Social Color', 'karmakit' ),
+                'label' => esc_html__('Social Color', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .k-kit-footer_social a' => 'color: {{VALUE}};',
@@ -295,7 +297,7 @@ class Footer extends \Elementor\Widget_Base
         $this->add_control(
             'social_bg',
             [
-                'label' => esc_html__( 'Social Background', 'karmakit' ),
+                'label' => esc_html__('Social Background', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .k-kit-footer_social a' => 'background-color: {{VALUE}};',
@@ -310,14 +312,14 @@ class Footer extends \Elementor\Widget_Base
         $this->start_controls_tab(
             'social_style_hover',
             [
-                'label' => esc_html__( 'Hover', 'karmakit' ),
+                'label' => esc_html__('Hover', 'karma-kit'),
             ]
         );
 
         $this->add_control(
             'social_color_hover',
             [
-                'label' => esc_html__( 'Social Color', 'karmakit' ),
+                'label' => esc_html__('Social Color', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .k-kit-footer_social a:hover' => 'color: {{VALUE}};',
@@ -329,7 +331,7 @@ class Footer extends \Elementor\Widget_Base
         $this->add_control(
             'social_bg_hover',
             [
-                'label' => esc_html__( 'Social Background', 'karmakit' ),
+                'label' => esc_html__('Social Background', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .k-kit-footer_social a:hover' => 'background-color: {{VALUE}};',
@@ -347,7 +349,7 @@ class Footer extends \Elementor\Widget_Base
         $this->start_controls_section(
             'copyright_style',
             [
-                'label' => esc_html__( 'Copyright', 'karmakit' ),
+                'label' => esc_html__('Copyright', 'karma-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -370,7 +372,7 @@ class Footer extends \Elementor\Widget_Base
         $this->add_control(
             'copyright_color',
             [
-                'label' => esc_html__( 'Copyright Color', 'karmakit' ),
+                'label' => esc_html__('Copyright Color', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .k-kit-footer_copyright' => 'color: {{VALUE}};',
@@ -386,7 +388,7 @@ class Footer extends \Elementor\Widget_Base
         $this->start_controls_section(
             'nav_style',
             [
-                'label' => esc_html__( 'Nav', 'karmakit' ),
+                'label' => esc_html__('Nav', 'karma-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -396,8 +398,8 @@ class Footer extends \Elementor\Widget_Base
             'nav_padding',
             [
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'label' => esc_html__( 'Padding', 'karmakit' ),
-                'size_units' => [ 'px', 'em' ],
+                'label' => esc_html__('Padding', 'karma-kit'),
+                'size_units' => ['px', 'em'],
                 'selectors' => [
                     '{{WRAPPER}} .k-kit-menu a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
@@ -414,7 +416,7 @@ class Footer extends \Elementor\Widget_Base
         $this->add_control(
             'nav_color',
             [
-                'label' => esc_html__( 'Nav Color', 'karmakit' ),
+                'label' => esc_html__('Nav Color', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .k-kit-menu a' => 'color: {{VALUE}};',
@@ -425,7 +427,7 @@ class Footer extends \Elementor\Widget_Base
         $this->add_control(
             'nav_color_hover',
             [
-                'label' => esc_html__( 'Nav Hover Color', 'karmakit' ),
+                'label' => esc_html__('Nav Hover Color', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .k-kit-menu a:hover' => 'color: {{VALUE}};',
@@ -450,7 +452,6 @@ class Footer extends \Elementor\Widget_Base
 
 
         $this->end_controls_section();
-
     }
 
 
@@ -479,6 +480,4 @@ class Footer extends \Elementor\Widget_Base
             'widget' => $this
         ]);
     }
-
-
 }

@@ -29,8 +29,8 @@ class Admin extends \WpTool\Helper\Hook
     {
         add_submenu_page(
             'themes.php',
-            __( 'Karma Template', 'karmakit' ),
-            __( 'Karma Template', 'karmakit' ),
+            __( 'Karma Template', 'karma-kit' ),
+            __( 'Karma Template', 'karma-kit' ),
             'edit_pages',
             'edit.php?post_type=karma-kit-template'
         );

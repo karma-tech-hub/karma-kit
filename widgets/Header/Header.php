@@ -21,7 +21,7 @@ class Header extends \Elementor\Widget_Base
      */
     public function get_name()
     {
-        return __('Header', 'karmakit');
+        return __('Header', 'karma-kit');
     }
 
 
@@ -32,7 +32,7 @@ class Header extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return __('Header', 'karmakit');
+        return __('Header', 'karma-kit');
     }
 
 
@@ -81,7 +81,7 @@ class Header extends \Elementor\Widget_Base
         $this->start_controls_section(
             'layouts',
             [
-                'label' => esc_html__( 'Layout', 'karmakit' ),
+                'label' => esc_html__( 'Layout', 'karma-kit' ),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT
             ]
         );
@@ -91,7 +91,7 @@ class Header extends \Elementor\Widget_Base
             'layout',
             [
                 'type' => \Elementor\Controls_Manager::SELECT,
-                'label' => esc_html__( 'Layout', 'karmakit' ),
+                'label' => esc_html__( 'Layout', 'karma-kit' ),
                 'options' => [
                     'one' => 'Layout One',
                 ],
@@ -104,7 +104,7 @@ class Header extends \Elementor\Widget_Base
             'style',
             [
                 'type' => \Elementor\Controls_Manager::SELECT,
-                'label' => esc_html__( 'Style', 'karmakit' ),
+                'label' => esc_html__( 'Style', 'karma-kit' ),
                 'options' => [
                     'style-one' => 'Style One',
                     'style-two' => 'Style Two',
@@ -120,7 +120,7 @@ class Header extends \Elementor\Widget_Base
         $this->start_controls_section(
             'logo_section',
             [
-                'label' => esc_html__( 'Logo', 'karmakit' ),
+                'label' => esc_html__( 'Logo', 'karma-kit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT
             ]
         );
@@ -128,7 +128,7 @@ class Header extends \Elementor\Widget_Base
             'show_logo',
             [
                 'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label' => esc_html__( 'Show Logo', 'karmakit' ),
+                'label' => esc_html__( 'Show Logo', 'karma-kit' ),
                 'default' => 'yes'
             ]
         );
@@ -137,7 +137,7 @@ class Header extends \Elementor\Widget_Base
             'logo',
             [
                 'type' => \Elementor\Controls_Manager::MEDIA,
-                'label' => esc_html__( 'Logo', 'karmakit' ),
+                'label' => esc_html__( 'Logo', 'karma-kit' ),
                 'default' => [
                     'url' => KARMA_KIT_URL . 'widgets/Header/img/logo.png'
                 ]
@@ -148,7 +148,7 @@ class Header extends \Elementor\Widget_Base
             'logo_url',
             [
                 'type' => \Elementor\Controls_Manager::URL,
-                'label' => esc_html__( 'Logo Url', 'karmakit' ),
+                'label' => esc_html__( 'Logo Url', 'karma-kit' ),
             ]
         );
 
@@ -159,7 +159,7 @@ class Header extends \Elementor\Widget_Base
         $this->start_controls_section(
             'nav_section',
             [
-                'label' => esc_html__( 'Nav', 'karmakit' ),
+                'label' => esc_html__( 'Nav', 'karma-kit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT
             ]
         );
@@ -168,7 +168,7 @@ class Header extends \Elementor\Widget_Base
             'show_nav',
             [
                 'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label' => esc_html__( 'Show Nav', 'karmakit' ),
+                'label' => esc_html__( 'Show Nav', 'karma-kit' ),
                 'default' => 'yes'
             ]
         );
@@ -181,7 +181,7 @@ class Header extends \Elementor\Widget_Base
             'nav',
             [
                 'type' => \Elementor\Controls_Manager::SELECT,
-                'label' => esc_html__( 'Nav', 'karmakit' ),
+                'label' => esc_html__( 'Nav', 'karma-kit' ),
                 'options' => $menus
             ]
         );
@@ -194,7 +194,7 @@ class Header extends \Elementor\Widget_Base
         $this->start_controls_section(
             'button',
             [
-                'label' => esc_html__( 'Button', 'karmakit' ),
+                'label' => esc_html__( 'Button', 'karma-kit' ),
                 'tab'   => \Elementor\Controls_Manager::TAB_CONTENT
             ]
         );
@@ -203,7 +203,7 @@ class Header extends \Elementor\Widget_Base
             'show_button',
             [
                 'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label' => esc_html__( 'Show Button', 'karmakit' ),
+                'label' => esc_html__( 'Show Button', 'karma-kit' ),
                 'default' => 'yes'
             ]
         );
@@ -212,7 +212,7 @@ class Header extends \Elementor\Widget_Base
             'button',
             [
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'label' => esc_html__( 'Button Text', 'karmakit' ),
+                'label' => esc_html__( 'Button Text', 'karma-kit' ),
                 'default' => 'Register / Login'
             ]
         );
@@ -221,7 +221,7 @@ class Header extends \Elementor\Widget_Base
             'button_url',
             [
                 'type' => \Elementor\Controls_Manager::URL,
-                'label' => esc_html__( 'Button Url', 'karmakit' ),
+                'label' => esc_html__( 'Button Url', 'karma-kit' ),
             ]
         );
 
@@ -231,7 +231,7 @@ class Header extends \Elementor\Widget_Base
         $this->start_controls_section(
             'logo_style',
             [
-                'label' => esc_html__( 'Logo', 'karmakit' ),
+                'label' => esc_html__( 'Logo', 'karma-kit' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -243,7 +243,7 @@ class Header extends \Elementor\Widget_Base
         $this->start_controls_section(
             'nav_style',
             [
-                'label' => esc_html__( 'Nav', 'karmakit' ),
+                'label' => esc_html__( 'Nav', 'karma-kit' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -253,7 +253,7 @@ class Header extends \Elementor\Widget_Base
             'nav_padding',
             [
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'label' => esc_html__( 'Padding', 'karmakit' ),
+                'label' => esc_html__( 'Padding', 'karma-kit' ),
                 'size_units' => [ 'px', 'em' ],
                 'selectors' => [
                     '{{WRAPPER}} .k-kit-menu a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -271,7 +271,7 @@ class Header extends \Elementor\Widget_Base
         $this->add_control(
             'nav_color',
             [
-                'label' => esc_html__( 'Nav Color', 'karmakit' ),
+                'label' => esc_html__( 'Nav Color', 'karma-kit' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .k-kit-menu a' => 'color: {{VALUE}};',
@@ -282,7 +282,7 @@ class Header extends \Elementor\Widget_Base
         $this->add_control(
             'nav_color_hover',
             [
-                'label' => esc_html__( 'Nav Hover Color', 'karmakit' ),
+                'label' => esc_html__( 'Nav Hover Color', 'karma-kit' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .k-kit-menu a:hover' => 'color: {{VALUE}};',
@@ -310,7 +310,7 @@ class Header extends \Elementor\Widget_Base
         $this->start_controls_section(
             'button_style',
             [
-                'label' => esc_html__( 'Button', 'karmakit' ),
+                'label' => esc_html__( 'Button', 'karma-kit' ),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE,
             ]
         );
@@ -318,7 +318,7 @@ class Header extends \Elementor\Widget_Base
         $this->add_control(
             'button_bg',
             [
-                'label' => esc_html__( 'Button Background Color', 'karmakit' ),
+                'label' => esc_html__( 'Button Background Color', 'karma-kit' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .k-kit-header_btn' => 'background-color: {{VALUE}};',
@@ -330,7 +330,7 @@ class Header extends \Elementor\Widget_Base
         $this->add_control(
             'button_color',
             [
-                'label' => esc_html__( 'Button Color', 'karmakit' ),
+                'label' => esc_html__( 'Button Color', 'karma-kit' ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .k-kit-header_btn' => 'color: {{VALUE}};',
@@ -362,7 +362,7 @@ class Header extends \Elementor\Widget_Base
         $this->add_control(
             'button_border_radius',
             [
-                'label' => esc_html__( 'Border Radius', 'karmakit' ),
+                'label' => esc_html__( 'Border Radius', 'karma-kit' ),
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => [ 'px', '%', 'em' ],
                 'selectors' => [
@@ -384,7 +384,7 @@ class Header extends \Elementor\Widget_Base
             'button_padding',
             [
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
-                'label' => esc_html__( 'Padding', 'karmakit' ),
+                'label' => esc_html__( 'Padding', 'karma-kit' ),
                 'size_units' => [ 'px', 'em' ],
                 'selectors' => [
                     '{{WRAPPER}} .k-kit-header_btn' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',

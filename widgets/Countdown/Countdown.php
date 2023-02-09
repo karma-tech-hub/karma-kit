@@ -23,7 +23,7 @@ class Countdown extends \Elementor\Widget_Base
      */
     public function get_name()
     {
-        return __('Countdown', 'karmakit');
+        return __('Countdown', 'karma-kit');
     }
 
 
@@ -34,7 +34,7 @@ class Countdown extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return __('Countdown', 'karmakit');
+        return __('Countdown', 'karma-kit');
     }
 
 
@@ -91,7 +91,7 @@ class Countdown extends \Elementor\Widget_Base
         $this->start_controls_section(
             'content',
             [
-                'label' => esc_html__('Content', 'karmakit'),
+                'label' => esc_html__('Content', 'karma-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT
             ]
         );
@@ -99,7 +99,7 @@ class Countdown extends \Elementor\Widget_Base
         $this->add_control(
             'due_date',
             [
-                'label' => esc_html__('Countdown deadline', 'karmakit'),
+                'label' => esc_html__('Countdown deadline', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::DATE_TIME,
                 'default' => '2023-05-28 12:00'
             ]
@@ -108,18 +108,18 @@ class Countdown extends \Elementor\Widget_Base
         $this->add_control(
             'countdown_title',
             [
-                'label' => esc_html__('Countdown text', 'karmakit'),
+                'label' => esc_html__('Countdown text', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'placeholder' => esc_html__('50% OFF ON BLACK FRIDAY', 'karmakit'),
+                'placeholder' => esc_html__('50% OFF ON BLACK FRIDAY', 'karma-kit'),
             ]
         );
 
         $this->add_control(
             'countdown_end_title',
             [
-                'label' => esc_html__('Countdown over-time text', 'karmakit'),
+                'label' => esc_html__('Countdown over-time text', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'placeholder' => esc_html__('Sale campaign is over!', 'karmakit'),
+                'placeholder' => esc_html__('Sale campaign is over!', 'karma-kit'),
             ]
         );
 
@@ -128,7 +128,7 @@ class Countdown extends \Elementor\Widget_Base
         $this->start_controls_section(
             'general_style',
             [
-                'label' => esc_html__('General', 'karmakit'),
+                'label' => esc_html__('General', 'karma-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE
             ]
         );
@@ -145,7 +145,7 @@ class Countdown extends \Elementor\Widget_Base
         $this->add_control(
             'color',
             [
-                'label' => esc_html__('Text color', 'karmakit'),
+                'label' => esc_html__('Text color', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .countdown-notif'          => 'color: {{VALUE}}',
@@ -158,7 +158,7 @@ class Countdown extends \Elementor\Widget_Base
         $this->add_control(
 			'height',
 			[
-				'label' => esc_html__( 'Height', 'karmakit' ),
+				'label' => esc_html__( 'Height', 'karma-kit' ),
 				'type' => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px' ],
 				'range' => [
@@ -193,7 +193,7 @@ class Countdown extends \Elementor\Widget_Base
         $this->add_control(
             'countdown_color',
             [
-                'label' => esc_html__('Timer color', 'karmakit'),
+                'label' => esc_html__('Timer color', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .karmakit-countdown .countdown-timer-timer span'   => 'color: {{VALUE}}'
@@ -204,7 +204,7 @@ class Countdown extends \Elementor\Widget_Base
         $this->add_control(
             'countdown_backcolor',
             [
-                'label' => esc_html__('Timer background', 'karmakit'),
+                'label' => esc_html__('Timer background', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .karmakit-countdown .countdown-timer-timer span'   => 'background-color: {{VALUE}}'
@@ -215,7 +215,7 @@ class Countdown extends \Elementor\Widget_Base
         $this->add_control(
             'close_color',
             [
-                'label' => esc_html__('Close button color', 'karmakit'),
+                'label' => esc_html__('Close button color', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .karmakit-countdown svg path'   => 'fill: {{VALUE}}'
@@ -270,7 +270,7 @@ class Countdown extends \Elementor\Widget_Base
             </svg>
             <?php if (is_admin()) : ?>
                 <div class="preload-widget">
-                    <small class="countdown-notif"><?php _e('Your timer deadline set to ', 'karmakit'); ?><?php echo $settings['due_date']; ?>.<?php echo _e(' For watching countdown time please view the page.', 'karmakit'); ?></small>
+                    <small class="countdown-notif"><?php _e('Your timer deadline set to ', 'karma-kit'); ?><?php echo $settings['due_date']; ?>.<?php echo _e(' For watching countdown time please view the page.', 'karma-kit'); ?></small>
                 </div>
             <?php else : ?>
                 <div class="countdown-timer">

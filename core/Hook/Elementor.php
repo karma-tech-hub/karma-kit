@@ -60,7 +60,7 @@ class Elementor extends Hook
         $elements_manager->add_category(
             KARMA_KIT_GROUP,
             [
-                'title' => __('Karma Kit', 'karmakit'),
+                'title' => __('Karma Kit', 'karma-kit'),
                 'icon' => 'fa fa-plug',
             ]
         );

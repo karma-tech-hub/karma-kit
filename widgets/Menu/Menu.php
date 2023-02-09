@@ -23,7 +23,7 @@ class Menu extends \Elementor\Widget_Base
      */
     public function get_name()
     {
-        return __('Menu', 'karmakit');
+        return __('Menu', 'karma-kit');
     }
 
 
@@ -34,7 +34,7 @@ class Menu extends \Elementor\Widget_Base
      */
     public function get_title()
     {
-        return __('Menu', 'karmakit');
+        return __('Menu', 'karma-kit');
     }
 
 
@@ -97,7 +97,7 @@ class Menu extends \Elementor\Widget_Base
         $this->start_controls_section(
             'content',
             [
-                'label' => esc_html__('Menu', 'karmakit'),
+                'label' => esc_html__('Menu', 'karma-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT
             ]
         );
@@ -113,7 +113,7 @@ class Menu extends \Elementor\Widget_Base
         $this->add_control(
             'menu',
             [
-                'label' => esc_html__('Menu', 'karmakit'),
+                'label' => esc_html__('Menu', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => $menu_list[0]->name,
                 'options' => $menu_list,
@@ -123,7 +123,7 @@ class Menu extends \Elementor\Widget_Base
         $this->add_control(
             'responsive_menu',
             [
-                'label' => esc_html__('Responsive menu', 'karmakit'),
+                'label' => esc_html__('Responsive menu', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::SELECT,
                 'default' => $menu_list[0]->name,
                 'options' => $menu_list,
@@ -135,7 +135,7 @@ class Menu extends \Elementor\Widget_Base
         $this->start_controls_section(
             'general_style',
             [
-                'label' => esc_html__('General', 'karmakit'),
+                'label' => esc_html__('General', 'karma-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE
             ]
         );
@@ -152,10 +152,10 @@ class Menu extends \Elementor\Widget_Base
         $this->add_control(
             'show_seperator',
             [
-                'label' => esc_html__('Show seperator', 'karmakit'),
+                'label' => esc_html__('Show seperator', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__('Show', 'karmakit'),
-                'label_off' => esc_html__('Hide', 'karmakit'),
+                'label_on' => esc_html__('Show', 'karma-kit'),
+                'label_off' => esc_html__('Hide', 'karma-kit'),
                 'return_value' => 'yes',
                 'default' => 'yes',
             ]
@@ -166,7 +166,7 @@ class Menu extends \Elementor\Widget_Base
         $this->start_controls_section(
             'mainmenu_desktop_style',
             [
-                'label' => esc_html__('Main Menu', 'karmakit'),
+                'label' => esc_html__('Main Menu', 'karma-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE
             ]
         );
@@ -174,7 +174,7 @@ class Menu extends \Elementor\Widget_Base
         $this->add_control(
             'space_right',
             [
-                'label' => esc_html__('Space between', 'karmakit'),
+                'label' => esc_html__('Space between', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range' => [
@@ -200,7 +200,7 @@ class Menu extends \Elementor\Widget_Base
         $this->add_control(
             'space_left',
             [
-                'label' => esc_html__('Space between', 'karmakit'),
+                'label' => esc_html__('Space between', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range' => [
@@ -226,7 +226,7 @@ class Menu extends \Elementor\Widget_Base
         $this->add_control(
             'space_both',
             [
-                'label' => esc_html__('Space between', 'karmakit'),
+                'label' => esc_html__('Space between', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range' => [
@@ -252,7 +252,7 @@ class Menu extends \Elementor\Widget_Base
         $this->add_control(
             'vertical_padding',
             [
-                'label' => esc_html__('Vertical padding', 'karmakit'),
+                'label' => esc_html__('Vertical padding', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range' => [
@@ -275,19 +275,19 @@ class Menu extends \Elementor\Widget_Base
         $this->add_control(
             'menu_align',
             [
-                'label' => esc_html__('Alignment', 'karmakit'),
+                'label' => esc_html__('Alignment', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::CHOOSE,
                 'options' => [
                     'start' => [
-                        'title' => esc_html__('Left', 'karmakit'),
+                        'title' => esc_html__('Left', 'karma-kit'),
                         'icon' => 'eicon-text-align-left',
                     ],
                     'center' => [
-                        'title' => esc_html__('Center', 'karmakit'),
+                        'title' => esc_html__('Center', 'karma-kit'),
                         'icon' => 'eicon-text-align-center',
                     ],
                     'end' => [
-                        'title' => esc_html__('Right', 'karmakit'),
+                        'title' => esc_html__('Right', 'karma-kit'),
                         'icon' => 'eicon-text-align-right',
                     ],
                 ],
@@ -302,7 +302,7 @@ class Menu extends \Elementor\Widget_Base
         $this->add_control(
             'mainmenu_color',
             [
-                'label' => esc_html__('Color', 'karmakit'),
+                'label' => esc_html__('Color', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} #karmakit-nav > ul > li a' => 'color: {{VALUE}}',
@@ -315,7 +315,7 @@ class Menu extends \Elementor\Widget_Base
         $this->add_control(
             'mainmenu_backcolor',
             [
-                'label' => esc_html__('Background color', 'karmakit'),
+                'label' => esc_html__('Background color', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} #karmakit-nav > ul > li' => 'background-color: {{VALUE}}',
@@ -326,7 +326,7 @@ class Menu extends \Elementor\Widget_Base
         $this->add_control(
             'mainmenu_hover_color',
             [
-                'label' => esc_html__('Hover color', 'karmakit'),
+                'label' => esc_html__('Hover color', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} #karmakit-nav > ul > li:hover > a' => 'color: {{VALUE}}',
@@ -339,7 +339,7 @@ class Menu extends \Elementor\Widget_Base
         $this->add_control(
             'mainmenu_hover_backcolor',
             [
-                'label' => esc_html__('Hover back-color', 'karmakit'),
+                'label' => esc_html__('Hover back-color', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} #karmakit-nav > ul > li:hover' => 'background-color: {{VALUE}}',
@@ -352,7 +352,7 @@ class Menu extends \Elementor\Widget_Base
         $this->start_controls_section(
             'submenu_desktop_style',
             [
-                'label' => esc_html__('SubMenu', 'karmakit'),
+                'label' => esc_html__('SubMenu', 'karma-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE
             ]
         );
@@ -360,7 +360,7 @@ class Menu extends \Elementor\Widget_Base
         $this->add_control(
             'submenu_width',
             [
-                'label' => esc_html__('Submenu width', 'karmakit'),
+                'label' => esc_html__('Submenu width', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::SLIDER,
                 'size_units' => ['px'],
                 'range' => [
@@ -383,7 +383,7 @@ class Menu extends \Elementor\Widget_Base
         $this->add_control(
             'submenu_color',
             [
-                'label' => esc_html__('Color', 'karmakit'),
+                'label' => esc_html__('Color', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} #karmakit-nav ul ul li a' => 'color: {{VALUE}}',
@@ -396,7 +396,7 @@ class Menu extends \Elementor\Widget_Base
         $this->add_control(
             'submenu_backcolor',
             [
-                'label' => esc_html__('Background color', 'karmakit'),
+                'label' => esc_html__('Background color', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} #karmakit-nav ul ul li' => 'background-color: {{VALUE}}',
@@ -407,7 +407,7 @@ class Menu extends \Elementor\Widget_Base
         $this->add_control(
             'submenu_hover_color',
             [
-                'label' => esc_html__('Hover color', 'karmakit'),
+                'label' => esc_html__('Hover color', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} #karmakit-nav ul ul li:hover a' => 'color: {{VALUE}}',
@@ -420,7 +420,7 @@ class Menu extends \Elementor\Widget_Base
         $this->add_control(
             'submenu_hover_backcolor',
             [
-                'label' => esc_html__('Hover back-color', 'karmakit'),
+                'label' => esc_html__('Hover back-color', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} #karmakit-nav ul ul li:hover' => 'background-color: {{VALUE}}',
@@ -433,7 +433,7 @@ class Menu extends \Elementor\Widget_Base
         $this->start_controls_section(
             'responsive_style',
             [
-                'label' => esc_html__('Responsive', 'karmakit'),
+                'label' => esc_html__('Responsive', 'karma-kit'),
                 'tab' => \Elementor\Controls_Manager::TAB_STYLE
             ]
         );
@@ -441,7 +441,7 @@ class Menu extends \Elementor\Widget_Base
         $this->add_control(
             'responsive_color',
             [
-                'label' => esc_html__('Color', 'karmakit'),
+                'label' => esc_html__('Color', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} #karmakit-nav-res li a' => 'color: {{VALUE}}',
@@ -453,7 +453,7 @@ class Menu extends \Elementor\Widget_Base
         $this->add_control(
             'responsive_back_color',
             [
-                'label' => esc_html__('Background color', 'karmakit'),
+                'label' => esc_html__('Background color', 'karma-kit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} #karmakit-nav-res' => 'background-color: {{VALUE}}',

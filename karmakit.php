@@ -5,7 +5,7 @@
  * Author URI: https://karmatechhub.com
  * Version: 0.0.1
  * Description: Karma kit Plugin is widgets kit for Elementor
- * Text Domain: karmakit
+ * Text Domain: karma-kit
  * Domain Path: /languages
  * @project     : KarmaKit
  * @version     : 1.0.0

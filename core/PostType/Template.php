@@ -1,4 +1,5 @@
 <?php
+
 namespace Karma\Kit\PostType;
 
 use Carbon_Fields\Container;
@@ -26,17 +27,17 @@ class Template extends PostType
     protected $type = 'karma-kit-template';
 
     protected $args = [
-        'supports'              => array( 'title', 'editor', 'revisions', 'elementor' ),
+        'supports'              => array('title', 'editor', 'revisions', 'elementor'),
         'hierarchical'          => false,
         'public'                => true,
-        'show_ui'       		=> true,
+        'show_ui'               => true,
         'show_in_menu'          => true,
         'menu_position'         => 25,
-        'menu_icon'     		=> 'dashicons-editor-kitchensink',
+        'menu_icon'             => 'dashicons-editor-kitchensink',
         'show_in_admin_bar'     => true,
         'show_in_nav_menus'     => false,
         'can_export'            => true,
-        'has_archive'   		=> false,
+        'has_archive'           => false,
         'exclude_from_search'   => true,
         'publicly_queryable'    => true,
         'rewrite'               => false,
@@ -137,11 +138,11 @@ class Template extends PostType
      */
     public function init()
     {
-        add_filter( 'single_template', [ $this, 'load_canvas_template' ] );
+        add_filter('single_template', [$this, 'load_canvas_template']);
 
-        add_action( 'init', [$this, 'register_metabox'] );
-        add_action( 'save_post', [ $this, 'sync_templates' ] , 99, 3);
-        add_action( 'template_redirect', [ $this, 'block_template_frontend' ] );
+        add_action('init', [$this, 'register_metabox']);
+        add_action('save_post', [$this, 'sync_templates'], 99, 3);
+        add_action('template_redirect', [$this, 'block_template_frontend']);
     }
 
     /**
@@ -153,10 +154,10 @@ class Template extends PostType
     {
         global $post;
 
-        if ( $this->type == $post->post_type && defined('ELEMENTOR_PATH') && ELEMENTOR_PATH ) {
+        if ($this->type == $post->post_type && defined('ELEMENTOR_PATH') && ELEMENTOR_PATH) {
             $elementor_2_0_canvas = ELEMENTOR_PATH . '/modules/page-templates/templates/canvas.php';
 
-            if ( file_exists( $elementor_2_0_canvas ) ) {
+            if (file_exists($elementor_2_0_canvas)) {
                 return $elementor_2_0_canvas;
             } else {
                 return ELEMENTOR_PATH . '/includes/page-templates/canvas.php';
@@ -173,8 +174,8 @@ class Template extends PostType
      */
     public function block_template_frontend()
     {
-        if ( is_singular( $this->type ) && ! current_user_can( 'edit_posts' ) ) {
-            wp_redirect( site_url(), 301 );
+        if (is_singular($this->type) && !current_user_can('edit_posts')) {
+            wp_redirect(site_url(), 301);
             die;
         }
     }
@@ -197,11 +198,11 @@ class Template extends PostType
      */
     public static function get_all_templates()
     {
-        if(!self::$templates){
+        if (!self::$templates) {
 
             $query = new \WP_Query([
                 'post_type' => self::get_post_type(),
-                'post_status' => [ 'publish' ],
+                'post_status' => ['publish'],
             ]);
 
             self::$templates = $query->get_posts();
@@ -222,9 +223,9 @@ class Template extends PostType
      */
     public function sync_templates($post_id, $post, $update)
     {
-        if($post->post_type == $this->type){
+        if ($post->post_type == $this->type) {
             $query = new \WP_Query([
-                'post_type'         => [ $this->type ],
+                'post_type'         => [$this->type],
                 'post_status'       => ['publish'],
                 'posts_per_page'    => -1,
                 'fields'            => 'ids'
@@ -232,8 +233,8 @@ class Template extends PostType
 
             $templates        = [];
 
-            if($query->have_posts()){
-                while($query->have_posts()){
+            if ($query->have_posts()) {
+                while ($query->have_posts()) {
                     $query->the_post();
 
                     $type           = get_post_meta(get_the_ID(), 'karma_template_type', true);
@@ -249,7 +250,6 @@ class Template extends PostType
                         'not_display_on'    => $not_display_on,
                         'user_rule'         => $user_rule,
                     ];
-
                 }
             }
 
@@ -273,73 +273,73 @@ class Template extends PostType
         $top_bars       = karma_get_current_templates('top-bar', 'select');
         $before_footers = karma_get_current_templates('before-footer', 'select');
 
-        if($types[$this->type]){
+        if ($types[$this->type]) {
             unset($types[$this->type]);
         }
 
         wpify_custom_fields()->create_metabox([
-            'title'      => __('Layout Template', 'karmakit'),
+            'title'      => __('Layout Template', 'karma-kit'),
             'post_types' => $types,
             'priority'   => 'high',
             'items'      => [
                 array(
                     'type'  => 'select',
-                    'title' => __( 'Top Bar', 'karmakit' ),
+                    'title' => __('Top Bar', 'karma-kit'),
                     'id'    => 'karma_top_bar',
                     'options'    =>  $top_bars
                 ),
                 array(
                     'type'  => 'select',
-                    'title' => __( 'Header', 'karmakit' ),
+                    'title' => __('Header', 'karma-kit'),
                     'id'    => 'karma_header',
                     'options'    =>  $headers
                 ),
                 array(
                     'type'  => 'select',
-                    'title' => __( 'Before Footer', 'karmakit' ),
+                    'title' => __('Before Footer', 'karma-kit'),
                     'id'    => 'karma_before_footer',
                     'options'    =>  $before_footers
                 ),
                 array(
                     'type'  => 'select',
-                    'title' => __( 'Footer', 'karmakit' ),
+                    'title' => __('Footer', 'karma-kit'),
                     'id'    => 'karma_footer',
                     'options'    =>  $footers
                 ),
             ]
         ]);
 
-        wpify_custom_fields()->create_metabox( array(
+        wpify_custom_fields()->create_metabox(array(
 
-            'title'      => __('Template Options', 'karmakit'),
-            'post_types' => array( $this->type ),
+            'title'      => __('Template Options', 'karma-kit'),
+            'post_types' => array($this->type),
             'priority'      => 'high',
             'items'      => array(
                 array(
                     'type'  => 'select',
-                    'title' => __( 'Template Type', 'karmakit' ),
+                    'title' => __('Template Type', 'karma-kit'),
                     'id'    => 'karma_template_type',
                     'options'    =>  convert_array_select_options($this->template_types)
                 ),
                 array(
                     'type'  => 'multi_select',
-                    'title' => __( 'Display On', 'karmakit' ),
+                    'title' => __('Display On', 'karma-kit'),
                     'id'    => 'karma_display_on',
                     'options'    =>  convert_array_select_options($this->template_display_rules)
                 ),
                 array(
                     'type'  => 'multi_select',
-                    'title' => __( 'Not Display On', 'karmakit' ),
+                    'title' => __('Not Display On', 'karma-kit'),
                     'id'    => 'karma_not_display_on',
                     'options'    =>  convert_array_select_options($this->template_display_rules)
                 ),
                 array(
                     'type'  => 'multi_select',
-                    'title' => __( 'User Rule', 'karmakit' ),
+                    'title' => __('User Rule', 'karma-kit'),
                     'id'    => 'karma_user_rule',
                     'options'    =>  convert_array_select_options($this->template_user_rules)
                 ),
             ),
-        ) );
+        ));
     }
 }

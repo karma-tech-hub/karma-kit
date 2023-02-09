@@ -13,9 +13,9 @@ $nav    = $widget->get_settings_for_display('nav');
 
 ?>
 
-<header class="k-kit-header header-style-<?php echo $style;?>">
+<header class="k-kit-header header-style-<?php echo esc_html($style); ?>">
     <div class="k-kit-header_logo">
-        <?php echo esc_html__('header', 'karmakit'); ?>
+        <?php echo esc_html__('header', 'karma-kit'); ?>
     </div>
     <?php
     if($nav){
@@ -24,7 +24,7 @@ $nav    = $widget->get_settings_for_display('nav');
     ?>
 
     <a href="" class="">
-        <?php echo esc_html__('Register / Login', 'karmakit'); ?>
+        <?php echo esc_html__('Register / Login', 'karma-kit'); ?>
     </a>
 
 </header>

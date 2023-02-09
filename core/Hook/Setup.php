@@ -32,7 +32,7 @@ class Setup extends \WpTool\Helper\Hook
     {
         register_nav_menus(
             array(
-                'k-kit-menu' => __('Karma Kit Menu', 'karmakit'),
+                'k-kit-menu' => __('Karma Kit Menu', 'karma-kit'),
             )
         );
     }
@@ -45,6 +45,6 @@ class Setup extends \WpTool\Helper\Hook
      */
     public function load_text_domain()
     {
-        load_plugin_textdomain('karmakit', false, KARMA_KIT_PATH . '/lang/');
+        load_plugin_textdomain('karma-kit', false, KARMA_KIT_PATH . '/lang/');
     }
 }
